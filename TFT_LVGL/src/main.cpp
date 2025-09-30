@@ -13,6 +13,8 @@ void my_disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_map)
   lv_display_flush_ready(disp);
 }
 
+#include "Simple_Loading.c"
+
 static void my_log_cb(signed char, const char *buf)
 {
   Serial.println(buf); // Print logs to Serial Monitor
@@ -25,6 +27,8 @@ static uint32_t my_tick(void)
 
 void setup()
 {
+  LV_IMAGE_DECLARE(WTFDLLM);
+
   // Don't TOUCH THIS SECTION
   Serial.begin(115200);
   lv_init();
@@ -33,12 +37,22 @@ void setup()
   lv_display_t *disp;
   disp = lv_tft_espi_create(TFT_HOR_RES, TFT_VER_RES, draw_buf, sizeof(draw_buf));
   lv_display_set_rotation(disp, TFT_ROTATION);
+  lv_obj_set_style_bg_color(lv_screen_active(), lv_color_hex(0xFFFFFF), LV_PART_MAIN);  // white
   // Don't TOUCH THIS SECTION
 
+  lv_obj_t *img;
+
+  img = lv_gif_create(lv_screen_active());
+  lv_gif_set_src(img, &WTFDLLM);
+  lv_img_set_zoom(img, 300);
+  lv_img_set_antialias(img, true);
+  lv_obj_center(img);
 
   lv_obj_t *label = lv_label_create(lv_screen_active());
-  lv_label_set_text(label, "Hello Arduino, I'm LVGL!");
-  lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
+  lv_label_set_text(label, "Meow Biu?");
+  lv_obj_align(label, LV_ALIGN_CENTER, 0, 60);
+
+  // Scale the GIF up by 2x
 }
 
 void loop()
