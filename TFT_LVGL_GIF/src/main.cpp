@@ -33,7 +33,7 @@ void setup()
   Serial.begin(115200);
   lv_init();
   lv_tick_set_cb(my_tick);
-  lv_log_register_print_cb(my_log_cb);
+  // lv_log_register_print_cb(my_log_cb);
   lv_display_t *disp;
   disp = lv_tft_espi_create(TFT_HOR_RES, TFT_VER_RES, draw_buf, sizeof(draw_buf));
   lv_display_set_rotation(disp, TFT_ROTATION);
@@ -50,6 +50,7 @@ void setup()
 
   lv_obj_t *label = lv_label_create(lv_screen_active());
   lv_label_set_text(label, "Meow Biu?");
+  lv_obj_set_style_text_font(label, &lv_font_montserrat_20, LV_PART_MAIN);
   lv_obj_align(label, LV_ALIGN_CENTER, 0, 60);
 
   // Scale the GIF up by 2x
