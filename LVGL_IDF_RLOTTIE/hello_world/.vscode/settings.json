@@ -1,0 +1,24 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.espIdfPath": "/Users/dennischang/esp/esp-idf",
+  "idf.toolsPath": "/Users/dennischang/.espressif",
+  "idf.pythonInstallPath": "/opt/homebrew/anaconda3/bin/python",
+  "workbench.colorCustomizations": {
+    "minimap.background": "#00000000",
+    "scrollbar.shadow": "#00000000"
+  },
+  "idf.port": "/dev/tty.usbmodem101",
+  "idf.openOcdConfigs": [
+    "board/esp32c3-builtin.cfg"
+  ],
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32c3"
+  },
+  "clangd.path": "/Users/dennischang/.espressif/tools/esp-clang/esp-19.1.2_20250312/esp-clang/bin/clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=/Users/dennischang/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc",
+    "--compile-commands-dir=/Users/dennischang/My_Drive/PSU/IEEE/Desktop_Gadget/Code/LVGL_IDF_RLOTTIE/hello_world/build"
+  ],
+  "idf.flashType": "UART"
+}

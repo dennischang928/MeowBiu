@@ -1,0 +1,15 @@
+{
+    "workbench.colorCustomizations": {
+        "minimap.background": "#00000000",
+        "scrollbar.shadow": "#00000000"
+    },
+    "files.associations": {
+        "simple_loading.c": "cpp",
+        "lv_rlottie_private.h": "c",
+        "lv_obj_class_private.h": "c",
+        "lvgl.h": "c",
+        "lv_switch.h": "c",
+        "lv_lottie.h": "c",
+        "lv_animimage.h": "c"
+    }
+}

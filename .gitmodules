@@ -1,0 +1,6 @@
+[submodule "LVGL_IDF_RLOTTIE/TFT_SPI_IDF/components/components/lvgl_esp32_drivers"]
+	path = LVGL_IDF_RLOTTIE/TFT_SPI_IDF/components/components/lvgl_esp32_drivers
+	url = https://github.com/lvgl/lvgl_esp32_drivers.git
+[submodule "LVGL_IDF_RLOTTIE/TFT_SPI_IDF/components/lvgl"]
+	path = LVGL_IDF_RLOTTIE/TFT_SPI_IDF/components/lvgl
+	url = https://github.com/lvgl/lvgl.git
