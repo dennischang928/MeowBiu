@@ -31,6 +31,14 @@
     "esp_lcd_panel_io.h": "c",
     "esp_lcd_gc9a01.h": "c",
     "bitset": "c",
-    "esp_heap_caps.h": "c"
+    "esp_heap_caps.h": "c",
+    "task.h": "c",
+    "display.h": "c",
+    "freertos.h": "c",
+    "lv_examples.h": "c",
+    "lv_example_anim.h": "c",
+    "lv_example_event.h": "c",
+    "lv_example_get_started.h": "c",
+    "lv_example_layout.h": "c"
   }
 }
