@@ -17,6 +17,8 @@
 #include "display.h"
 #include "lv_examples.h"
 
+// #include "rlottie.h"
+
 static const char *TAG = "main";
 
 // LVGL task handle
@@ -34,7 +36,8 @@ static void lvgl_task(void *pvParameters)
 
     // Create GIF animation
     
-    lv_example_gif_1();
+    // lv_example_gif_1();
+    lv_example_rlottie_1();
 
     // char buf[32];
 
@@ -43,8 +46,8 @@ static void lvgl_task(void *pvParameters)
         // static int log_counter = 0;
         // if (log_counter++ % 10 == 0)
         // {
-        //     // snprintf(buf, sizeof(buf), "Hello! %lld ms", esp_timer_get_time()/1000ULL);
-        //     // lv_label_set_text(label, buf);
+        //     snprintf(buf, sizeof(buf), "Hello! %lld ms", esp_timer_get_time()/1000ULL);
+        //     lv_label_set_text(label, buf);
         // }
         
         lv_timer_handler();
@@ -67,7 +70,7 @@ void app_main()
     BaseType_t ret = xTaskCreate(
         lvgl_task,        // Task function
         "LVGL_Task",      // Task name
-        8192,             // Stack size
+        20480,             // Stack size
         NULL,             // Parameters
         5,                // Priority
         &lvgl_task_handle // Task handle
