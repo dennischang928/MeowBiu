@@ -1,0 +1,47 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.espIdfPath": "/Users/dennischang/esp/esp-idf",
+  "idf.pythonInstallPath": "/opt/homebrew/anaconda3/bin/python",
+  "idf.openOcdConfigs": [
+    "board/esp32c3-builtin.cfg"
+  ],
+  "idf.port": "/dev/tty.usbmodem1101",
+  "idf.toolsPath": "/Users/dennischang/.espressif",
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32c3"
+  },
+  "clangd.path": "/Users/dennischang/.espressif/tools/esp-clang/esp-19.1.2_20250312/esp-clang/bin/clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=/Users/dennischang/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc",
+    "--compile-commands-dir=${workspaceFolder}/build"
+  ],
+  "workbench.colorCustomizations": {
+    "minimap.background": "#00000000",
+    "scrollbar.shadow": "#00000000"
+  },
+  "idf.flashType": "UART",
+  "files.associations": {
+    "esp_log.h": "c",
+    "stdio.h": "c",
+    "format": "c",
+    "thread": "c",
+    "lvgl.h": "c",
+    "esp_lcd_panel_vendor.h": "c",
+    "esp_lcd_panel_io.h": "c",
+    "esp_lcd_gc9a01.h": "c",
+    "bitset": "c",
+    "esp_heap_caps.h": "c",
+    "task.h": "c",
+    "display.h": "c",
+    "freertos.h": "c",
+    "lv_examples.h": "c",
+    "lv_example_anim.h": "c",
+    "lv_example_event.h": "c",
+    "lv_example_get_started.h": "c",
+    "lv_example_layout.h": "c",
+    "face.h": "c",
+    "lv_example_style.h": "c",
+    "esp_timer.h": "c"
+  }
+}
