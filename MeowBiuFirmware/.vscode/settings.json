@@ -5,7 +5,7 @@
   "idf.openOcdConfigs": [
     "board/esp32c3-builtin.cfg"
   ],
-  "idf.port": "/dev/tty.usbmodem1101",
+  "idf.port": "/dev/tty.usbmodem2101",
   "idf.toolsPath": "/Users/dennischang/.espressif",
   "idf.customExtraVars": {
     "IDF_TARGET": "esp32c3"
@@ -42,6 +42,22 @@
     "lv_example_layout.h": "c",
     "face.h": "c",
     "lv_example_style.h": "c",
-    "esp_timer.h": "c"
+    "esp_timer.h": "c",
+    "nail_anim.h": "c",
+    "nail_trans.h": "c",
+    "excited-start.h": "c",
+    "excited_start_frame_007.c": "cpp",
+    "excited_start_frame_001.c": "cpp",
+    "excited_start_frame_006.c": "cpp",
+    "excited_start_frame_015.c": "cpp",
+    "stddef.h": "c",
+    "stdint.h": "c",
+    "excited_start.h": "c",
+    "excited_start_2.h": "c",
+    "excited_loop.h": "c",
+    "idle_blink.h": "c",
+    "angry_start.h": "c",
+    "*.component_hash": "c",
+    "angry_loop.h": "c"
   }
 }

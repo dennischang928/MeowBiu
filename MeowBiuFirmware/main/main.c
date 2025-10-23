@@ -15,97 +15,131 @@
 #include "freertos/task.h"
 #include "lvgl.h"
 #include "display.h"
-
 #include "face.h"
-#include "lv_examples.h"
 
+// Configuration
+#define LVGL_TASK_PRIORITY 5
+#define LVGL_TASK_STACK_SIZE 8192
+#define LVGL_TICK_PERIOD_MS 5
+#define MAIN_LOOP_DELAY_MS 1000
+
+// Logging tags
 static const char *TAG = "main";
+static const char *TAG_LVGL = "LVGL";
+static const char *TAG_CHANGE = "EMOTION CHANGE";
 
-// LVGL task handle
+// Task handle
 static TaskHandle_t lvgl_task_handle = NULL;
 
-// LVGL task function - runs continuously in separate thread
-static void lvgl_task(void *pvParameters)
+// Emotion cycling state
+static int emotion_index = 0;
+static const emotion_t emotion_sequence[] = {
+    EMOTION_BLINK,
+    EMOTION_EXCITED ,
+    EMOTION_ANGRY,  
+};
+static const int emotion_sequence_length = sizeof(emotion_sequence) / sizeof(emotion_sequence[0]);
+
+/**
+ * @brief LVGL log callback - forwards LVGL logs to ESP-IDF logging system
+ */
+static void lvgl_log_callback(lv_log_level_t level, const char *buf)
 {
-    ESP_LOGI(TAG, "LVGL task started");
-    ESP_LOGI(TAG, "FreeRTOS tick rate: %d Hz, 1 tick = %d ms", configTICK_RATE_HZ, 1000 / configTICK_RATE_HZ);
-    lv_obj_set_style_bg_color(lv_scr_act(), lv_color_black(), LV_PART_MAIN);
-    // Create UI elements
-    // lv_obj_t *label = lv_label_create(lv_screen_active());
-    // lv_label_set_text(label, "Hello Arduino, I'm LVGL!");
-    // lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
-
-    // Create GIF animation
-
-    // lv_example_gif_1();
-
-    face_init();
-    // char buf[32];
-
-    while (1)
-    {
-        // static int log_counter = 0;
-        // if (log_counter++ % 10 == 0)
-        // {
-
-        //     // snprintf(buf, sizeof(buf), "Hello! %lld ms", esp_timer_get_time()/1000ULL);
-        //     // lv_label_set_text(label, buf);
-        // }
-
-        lv_timer_handler();
-        vTaskDelay(pdMS_TO_TICKS(5));
-    }
-    vTaskDelete(NULL);
-}
-
-void my_log_cb(lv_log_level_t level, const char *buf)
-{
-    const char *lvgl_tag = "LVGL";
     switch (level)
     {
     case LV_LOG_LEVEL_TRACE:
-        ESP_LOGV(lvgl_tag, "%s", buf);
+        ESP_LOGV(TAG_LVGL, "%s", buf);
         break;
     case LV_LOG_LEVEL_INFO:
-        ESP_LOGI(lvgl_tag, "%s", buf);
+    case LV_LOG_LEVEL_USER:
+        ESP_LOGI(TAG_LVGL, "%s", buf);
         break;
     case LV_LOG_LEVEL_WARN:
-        ESP_LOGW(lvgl_tag, "%s", buf);
+        ESP_LOGW(TAG_LVGL, "%s", buf);
         break;
     case LV_LOG_LEVEL_ERROR:
-        ESP_LOGE(lvgl_tag, "%s", buf);
-        break;
-    case LV_LOG_LEVEL_USER:
-        /* treat user logs as info */
-        ESP_LOGI(lvgl_tag, "%s", buf);
+        ESP_LOGE(TAG_LVGL, "%s", buf);
         break;
     default:
-        ESP_LOGI(lvgl_tag, "%s", buf);
+        ESP_LOGI(TAG_LVGL, "%s", buf);
         break;
     }
 }
+    
+/**
+ * @brief Animation finished callback - switches to next emotion
+ */
+void my_animation_done_callback(emotion_t emotion, void *user_data)
+{
+    ESP_LOGI(TAG, "Animation finished for emotion: %d", emotion);
+    
+    // Move to next emotion in sequence
+    emotion_index = (emotion_index + 1) % emotion_sequence_length;
+    emotion_t next_emotion = emotion_sequence[emotion_index];
+    
+    const char *emotion_names[] = {"EMOTION_BLINK", "EXCITED", "ANGRY"};
+    ESP_LOGI(TAG_CHANGE, "Changing emotion to %s", emotion_names[next_emotion]);
+    face_set_emotion(next_emotion);
+}
 
-void app_main()
+/**
+ * @brief LVGL task - handles UI rendering and timer updates
+ */
+static void lvgl_task(void *pvParameters)
+{
+    ESP_LOGI(TAG, "LVGL task started (FreeRTOS tick rate: %d Hz)", configTICK_RATE_HZ);
+
+    // Set black background
+    lv_obj_set_style_bg_color(lv_scr_act(), lv_color_make(0, 0, 0), LV_PART_MAIN);
+
+    // Initialize face UI
+    face_init();
+    face_set_animation_finished_callback(my_animation_done_callback, NULL);
+    
+    // Start with first emotion
+    face_set_emotion(emotion_sequence[0]);
+    // Main LVGL loop
+    while (1)
+    {
+        lv_timer_handler();
+        vTaskDelay(pdMS_TO_TICKS(LVGL_TICK_PERIOD_MS));
+    }
+}
+
+/**
+ * @brief Print LVGL memory statistics
+ */
+static void print_memory_stats(void)
+{
+    lv_mem_monitor_t mon;
+    lv_mem_monitor(&mon);
+    ESP_LOGI(TAG, "LVGL Memory - Free: %d bytes, Fragmentation: %d%%",
+             mon.free_size, mon.frag_pct);
+}
+
+/**
+ * @brief Application entry point
+ */
+void app_main(void)
 {
     ESP_LOGI(TAG, "Initializing display and LVGL...");
 
-    // Initialize SPI and LVGL
+    // Initialize hardware and LVGL
     SPI_Setup();
     LVGL_Setup();
 
-    lv_log_register_print_cb(my_log_cb);
+    // Register LVGL log callback
+    lv_log_register_print_cb(lvgl_log_callback);
 
+    // Create LVGL task
     ESP_LOGI(TAG, "Creating LVGL task...");
-
-    // Create LVGL task with appropriate priority and stack size
     BaseType_t ret = xTaskCreate(
-        lvgl_task,        // Task function
-        "LVGL_Task",      // Task name
-        8192,             // Stack size
-        NULL,             // Parameters
-        5,                // Priority
-        &lvgl_task_handle // Task handle
-    );
+        lvgl_task,
+        "LVGL_Task",
+        LVGL_TASK_STACK_SIZE,
+        NULL,
+        LVGL_TASK_PRIORITY,
+        &lvgl_task_handle);
 
     if (ret != pdPASS)
     {
@@ -113,16 +147,12 @@ void app_main()
         return;
     }
 
-    ESP_LOGI(TAG, "LVGL task created successfully on core 1");
+    ESP_LOGI(TAG, "LVGL task created successfully");
 
+    // Main loop - monitor system health
     while (1)
     {
-        // Do other non-UI work here
-        vTaskDelay(pdMS_TO_TICKS(1000));
-        // ESP_LOGI(TAG, "Main task running, free heap: %lu bytes", esp_get_free_heap_size());
-        lv_mem_monitor_t mon;
-        lv_mem_monitor(&mon);
-        ESP_LOGI("face", "Memory after delete - free: %d, frag: %d%%",
-                 mon.free_size, mon.frag_pct);
+        vTaskDelay(pdMS_TO_TICKS(MAIN_LOOP_DELAY_MS));
+        print_memory_stats();
     }
 }

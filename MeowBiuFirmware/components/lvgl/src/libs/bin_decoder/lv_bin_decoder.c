@@ -1116,7 +1116,7 @@ static lv_result_t decompress_image(lv_image_decoder_dsc_t * dsc, const lv_image
 #endif
     }
     else {
-        LV_LOG_WARN("Unknown compression method: %" LV_PRIu32, compressed->method);
+        LV_LOG_WARN("Unknown compression method: %d", (int)compressed->method);
         return LV_RESULT_INVALID;
     }
 

@@ -26,7 +26,7 @@
 #define LV_COLOR_DEPTH 16
 
 /** Swap the high and low bytes for RGB565 */
-#define LV_COLOR_16_SWAP 0
+#define LV_COLOR_16_SWAP 1
 
 /*=========================
    STDLIB WRAPPER SETTINGS
