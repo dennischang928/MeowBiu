@@ -1,32 +1,124 @@
-# _Sample project_
+# Outline
+┌─────────────────────────────────────────────────────────────┐
+│                        APPLICATION LAYER                    │
+│                          (main.c)                           │
+│  - Startup/shutdown orchestration                           │
+│  - Service registration and lifecycle management            │
+│  - High-level business logic only                           │
+└─────────────────────────────────────────────────────────────┘
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                     SERVICE MANAGER LAYER                   │
+│                    (service_manager)                        │
+│  - Dependency injection                                     │
+│  - Inter-service communication (event bus)                  │
+│  - Service health monitoring                                │
+└─────────────────────────────────────────────────────────────┘
+                              ▼
+┌──────────────┬──────────────┬──────────────┬────────────────┐
+│ UI SERVICE   │ TIME SERVICE │ SENSOR       │ NETWORK        │
+│              │              │ SERVICE      │ SERVICE        │
+│ - Screen mgmt│ - RTC mgmt   │ - Shock det. │ - WiFi/BLE     │
+│ - Mode FSM   │ - Timezone   │ - Debouncing │ - API calls    │
+│ - Rendering  │ - Alarms     │ - Callbacks  │ - OTA          │
+└──────────────┴──────────────┴──────────────┴────────────────┘
+                              ▼
+┌──────────────┬──────────────┬──────────────┬────────────────┐
+│ FACE ENGINE  │ LVGL HAL     │ DS3231       │ HTTP CLIENT    │
+│ (Component)  │ (Component)  │ DRIVER       │ (Component)    │
+│              │              │ (Component)  │                │
+└──────────────┴──────────────┴──────────────┴────────────────┘
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   HARDWARE ABSTRACTION LAYER                │
+│                        (ESP-IDF HAL)                        │
+│  - I2C, SPI, GPIO, WiFi, Timers                             │
+└─────────────────────────────────────────────────────────────┘
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
-
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
 
 
-
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
-
-## Example folder contents
-
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
-
+## 📁 Complete Directory Structure
 ```
+desk-gadget/
 ├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+├── sdkconfig
+├── partitions.csv
+│
+├── main/
+│   ├── CMakeLists.txt
+│   ├── main.c                          # Minimal startup only
+│   └── Kconfig.projbuild
+│
+├── components/
+│   │
+│   ├── service_manager/                # Core infrastructure
+│   │   ├── CMakeLists.txt
+│   │   ├── include/
+│   │   │   ├── service_manager.h
+│   │   │   ├── event_bus.h
+│   │   │   └── service_base.h
+│   │   ├── service_manager.c
+│   │   ├── event_bus.c
+│   │   └── README.md
+│   │
+│   ├── ui_service/                     # UI as a service
+│   │   ├── CMakeLists.txt
+│   │   ├── include/
+│   │   │   └── ui_service.h
+│   │   ├── ui_service.c
+│   │   ├── ui_state_machine.c
+│   │   ├── ui_screens.c
+│   │   └── ui_transitions.c
+│   │
+│   ├── time_service/                   # Time management service
+│   │   ├── CMakeLists.txt
+│   │   ├── include/
+│   │   │   └── time_service.h
+│   │   ├── time_service.c
+│   │   └── timezone.c
+│   │
+│   ├── sensor_service/                 # Sensor input service
+│   │   ├── CMakeLists.txt
+│   │   ├── include/
+│   │   │   └── sensor_service.h
+│   │   └── sensor_service.c
+│   │
+│   ├── network_service/                # WiFi/Network service
+│   │   ├── CMakeLists.txt
+│   │   ├── include/
+│   │   │   └── network_service.h
+│   │   ├── network_service.c
+│   │   ├── wifi_manager.c
+│   │   └── api_client.c
+│   │
+│   ├── face/                          # Face engine (your existing)
+│   │   ├── CMakeLists.txt
+│   │   ├── include/
+│   │   │   └── face.h
+│   │   ├── face.c
+│   │   └── assets/
+│   │
+│   ├── display_hal/                   # Display hardware abstraction
+│   │   ├── CMakeLists.txt
+│   │   ├── include/
+│   │   │   └── display_hal.h
+│   │   ├── display_hal.c
+│   │   └── gc9a01_driver.c
+│   │
+│   └── rtc_hal/                       # RTC hardware abstraction
+│       ├── CMakeLists.txt
+│       ├── include/
+│       │   └── rtc_hal.h
+│       └── ds3231_driver.c
+│
+├── tools/
+│   ├── generate_emotion.py
+│   └── deploy.sh
+│
+└── docs/
+    ├── architecture.md
+    └── service_api.md
+
+
+
+#

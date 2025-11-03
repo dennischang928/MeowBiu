@@ -29,15 +29,19 @@ static const char *TAG_LVGL = "LVGL";
 static const char *TAG_CHANGE = "EMOTION CHANGE";
 
 // Task handle
-static TaskHandle_t lvgl_task_handle = NULL;
+static TaskHandle_t display_task_handle = NULL;
 
 // Emotion cycling state
 static int emotion_index = 0;
 static const emotion_t emotion_sequence[] = {
+    // EMOTION_IDLE,
+    EMOTION_EXCITED,
+    EMOTION_ANGRY,
     EMOTION_BLINK,
-    EMOTION_EXCITED ,
-    EMOTION_ANGRY,  
-};
+    EMOTION_IDLE_LOOK_RIGHT,
+    EMOTION_SAD,
+    EMOTION_SCARED,
+    EMOTION_DGAF};
 static const int emotion_sequence_length = sizeof(emotion_sequence) / sizeof(emotion_sequence[0]);
 
 /**
@@ -65,27 +69,34 @@ static void lvgl_log_callback(lv_log_level_t level, const char *buf)
         break;
     }
 }
-    
+
 /**
  * @brief Animation finished callback - switches to next emotion
  */
 void my_animation_done_callback(emotion_t emotion, void *user_data)
 {
     ESP_LOGI(TAG, "Animation finished for emotion: %d", emotion);
-    
+
     // Move to next emotion in sequence
     emotion_index = (emotion_index + 1) % emotion_sequence_length;
     emotion_t next_emotion = emotion_sequence[emotion_index];
-    
-    const char *emotion_names[] = {"EMOTION_BLINK", "EXCITED", "ANGRY"};
-    ESP_LOGI(TAG_CHANGE, "Changing emotion to %s", emotion_names[next_emotion]);
+
+    const char *emotion_names[] = {"EMOTION_IDLE",
+                                   "EMOTION_EXCITED",
+                                   "EMOTION_ANGRY",
+                                   "EMOTION_BLINK",
+                                   "EMOTION_IDLE_LOOK_RIGHT",
+                                   "EMOTION_SAD",
+                                   "EMOTION_SCARED",
+                                   "EMOTION_DGAF"};
+    ESP_LOGI(TAG_CHANGE, "Changing emotion to %s", emotion_names[emotion_index]);
     face_set_emotion(next_emotion);
 }
 
 /**
  * @brief LVGL task - handles UI rendering and timer updates
  */
-static void lvgl_task(void *pvParameters)
+static void display_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "LVGL task started (FreeRTOS tick rate: %d Hz)", configTICK_RATE_HZ);
 
@@ -94,10 +105,13 @@ static void lvgl_task(void *pvParameters)
 
     // Initialize face UI
     face_init();
+    face_set_emotion(emotion_sequence[emotion_index]);
     face_set_animation_finished_callback(my_animation_done_callback, NULL);
-    
+
     // Start with first emotion
-    face_set_emotion(emotion_sequence[0]);
+
+    // face_set_emotion(EMOTION_SCARED);
+    // face_set_loop_count(EMOTION_SCARED, 4);
     // Main LVGL loop
     while (1)
     {
@@ -134,12 +148,12 @@ void app_main(void)
     // Create LVGL task
     ESP_LOGI(TAG, "Creating LVGL task...");
     BaseType_t ret = xTaskCreate(
-        lvgl_task,
+        display_task,
         "LVGL_Task",
         LVGL_TASK_STACK_SIZE,
         NULL,
         LVGL_TASK_PRIORITY,
-        &lvgl_task_handle);
+        &display_task_handle);
 
     if (ret != pdPASS)
     {
@@ -149,7 +163,10 @@ void app_main(void)
 
     ESP_LOGI(TAG, "LVGL task created successfully");
 
-    // Main loop - monitor system health
+    // Disable logs for "face" and "main" tags
+    esp_log_level_set("face", ESP_LOG_NONE);
+    esp_log_level_set("main", ESP_LOG_NONE);
+
     while (1)
     {
         vTaskDelay(pdMS_TO_TICKS(MAIN_LOOP_DELAY_MS));

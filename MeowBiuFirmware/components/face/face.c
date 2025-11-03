@@ -10,6 +10,23 @@
 
 #include "./assets/angry_start/angry_start.h"
 #include "./assets/angry_loop/angry_loop.h"
+
+#include "./assets/idle_look_right_start/idle_look_right_start.h"
+#include "./assets/idle_look_right_loop/idle_look_right_loop.h"
+
+#include "./assets/sad_start/sad_start.h"
+#include "./assets/sad_loop/sad_loop.h"
+
+#include "./assets/scared_start/scared_start.h"
+#include "./assets/scared_loop/scared_loop.h"
+
+#include "./assets/DGAF_start/DGAF_start.h"
+#include "./assets/DGAF_loop/DGAF_loop.h"
+
+#include "./assets/idle_look_left_start/idle_look_left_start.h"
+#include "./assets/idle_look_left_loop/idle_look_left_loop.h"
+
+
 // Add more emotion includes as needed
 
 static const char *TAG = "face";
@@ -33,6 +50,8 @@ typedef struct
   uint32_t loop_frame_count;
   uint16_t loop_frame_duration;
 
+  uint16_t loop_repeat_count;
+
 } emotion_assets_t;
 
 static struct
@@ -41,7 +60,6 @@ static struct
   emotion_t target_emotion;
   anim_state_t anim_state;
   bool transition_pending;
-  uint16_t loop_repeat_count;
 
   face_animation_finished_cb_t user_callback;
   void *user_callback_arg;
@@ -61,22 +79,24 @@ void face_set_animation_finished_callback(face_animation_finished_cb_t callback,
 }
 
 // Emotion asset definitions
-static const emotion_assets_t emotion_assets[] = {
+static emotion_assets_t emotion_assets[] = {
     [EMOTION_IDLE] = {
         .start_frames = NULL,
         .start_frame_count = 0,
         .start_end_frame_duration = 0,
         .loop_frames = NULL,
         .loop_frame_count = 0,
-        .loop_frame_duration = 0
+        .loop_frame_duration = 0,
+        .loop_repeat_count = 1,
     },
     [EMOTION_BLINK] = {
         .start_frames = (const void **)idle_blink_anim_frames,
         .start_frame_count = IDLE_BLINK_ANIM_FRAME_COUNT,
-        .start_end_frame_duration = 1000,
+        .start_end_frame_duration = 800,
         .loop_frames = (const void **)idle_blink_anim_frames,
         .loop_frame_count = IDLE_BLINK_ANIM_FRAME_COUNT,
-        .loop_frame_duration = 1000
+        .loop_frame_duration = 300,
+        .loop_repeat_count = 2,
     },
     [EMOTION_EXCITED] = {
         .start_frames = (const void **)excited_start_anim_frames,
@@ -84,7 +104,8 @@ static const emotion_assets_t emotion_assets[] = {
         .start_end_frame_duration = 1000,
         .loop_frames = (const void **)excited_loop_anim_frames,
         .loop_frame_count = EXCITED_LOOP_ANIM_FRAME_COUNT,
-        .loop_frame_duration = 1000
+        .loop_frame_duration = 1000,
+        .loop_repeat_count = 1,
     },
     [EMOTION_ANGRY] = {
         .start_frames = (const void **)angry_start_anim_frames,
@@ -92,8 +113,55 @@ static const emotion_assets_t emotion_assets[] = {
         .start_end_frame_duration = 1000,
         .loop_frames = (const void **)angry_loop_anim_frames,
         .loop_frame_count = ANGRY_LOOP_ANIM_FRAME_COUNT,
-        .loop_frame_duration = 1000
+        .loop_frame_duration = 1000,
+        .loop_repeat_count = 1,
     },
+    [EMOTION_IDLE_LOOK_RIGHT] = {
+        .start_frames = (const void **)idle_look_right_start_anim_frames,
+        .start_frame_count = IDLE_LOOK_RIGHT_START_ANIM_FRAME_COUNT,
+        .start_end_frame_duration = 250,
+        .loop_frames = (const void **)idle_look_right_loop_anim_frames,
+        .loop_frame_count = IDLE_LOOK_RIGHT_LOOP_ANIM_FRAME_COUNT,
+        .loop_frame_duration = 2000,
+        .loop_repeat_count = 1,
+    },
+    [EMOTION_IDLE_LOOK_LEFT] = {
+        .start_frames = (const void **)idle_look_left_start_anim_frames,
+        .start_frame_count = IDLE_LOOK_LEFT_START_ANIM_FRAME_COUNT,
+        .start_end_frame_duration = 250,
+        .loop_frames = (const void **)idle_look_left_loop_anim_frames,
+        .loop_frame_count = IDLE_LOOK_LEFT_LOOP_ANIM_FRAME_COUNT,
+        .loop_frame_duration = 2000,
+        .loop_repeat_count = 1,
+    },
+    [EMOTION_SAD] = {
+        .start_frames = (const void **)sad_start_anim_frames,
+        .start_frame_count = SAD_START_ANIM_FRAME_COUNT,
+        .start_end_frame_duration = 1000,
+        .loop_frames = (const void **)sad_loop_anim_frames,
+        .loop_frame_count = SAD_LOOP_ANIM_FRAME_COUNT,
+        .loop_frame_duration = 1500,
+        .loop_repeat_count = 4,
+    },
+    [EMOTION_SCARED] = {
+        .start_frames = (const void **)scared_start_anim_frames,
+        .start_frame_count = SCARED_START_ANIM_FRAME_COUNT,
+        .start_end_frame_duration = 750,
+        .loop_frames = (const void **)scared_loop_anim_frames,
+        .loop_frame_count = SCARED_LOOP_ANIM_FRAME_COUNT,
+        .loop_frame_duration = 1240,
+        .loop_repeat_count = 1,
+    },
+    [EMOTION_DGAF] = {
+        .start_frames = (const void **)DGAF_start_anim_frames,
+        .start_frame_count = DGAF_START_ANIM_FRAME_COUNT,
+        .start_end_frame_duration = 760,
+        .loop_frames = (const void **)DGAF_loop_anim_frames,
+        .loop_frame_count = DGAF_LOOP_ANIM_FRAME_COUNT,
+        .loop_frame_duration = 1240,
+        .loop_repeat_count = 1,
+    },
+
     // Add more emotions here
 };
 
@@ -124,6 +192,7 @@ static void configure_animation(const void **frames, uint32_t count, uint32_t du
   }
 
   lv_animimg_start(animimg);
+  lv_image_set_antialias(animimg, true);
   lv_image_set_scale(animimg, 384);
 }
 
@@ -173,17 +242,6 @@ static void on_start_finished(lv_anim_t *anim)
   play_loop_animation();
 }
 
-void face_set_loop_count(uint32_t count)
-{
-  if (count == 0)
-  {
-    ESP_LOGW(TAG, "Loop count must be at least 1, setting to 1");
-    count = 1;
-  }
-  face_state.loop_repeat_count = count;
-  ESP_LOGI(TAG, "Loop repeat count set to %lu", count);
-}
-
 static void play_start_animation(void)
 {
   emotion_t emotion = face_state.current_emotion;
@@ -213,7 +271,7 @@ static void play_loop_animation(void)
 
   configure_animation(emotion_assets[emotion].loop_frames,
                       emotion_assets[emotion].loop_frame_count,
-                      emotion_assets[emotion].loop_frame_duration, face_state.loop_repeat_count, on_loop_finished);
+                      emotion_assets[emotion].loop_frame_duration, emotion_assets[emotion].loop_repeat_count, on_loop_finished);
 }
 
 static void play_reverse_animation(void)
@@ -243,6 +301,17 @@ static void handle_transition(void)
   play_start_animation();
 }
 
+void face_set_loop_count(emotion_t emotion, uint8_t count)
+{
+  if (count == 0)
+  {
+    ESP_LOGW(TAG, "Loop count must be at least 1");
+    return;
+  }
+  emotion_assets[emotion].loop_repeat_count = count;
+  ESP_LOGI(TAG, "Loop repeat count set to %d", count);
+}
+
 // Public API
 void face_init(void)
 {
@@ -254,7 +323,6 @@ void face_init(void)
   face_state.current_emotion = EMOTION_IDLE;
   face_state.target_emotion = EMOTION_IDLE;
   face_state.anim_state = ANIM_STATE_START;
-  face_state.loop_repeat_count = 1; // Default to loop once
   face_state.transition_pending = false;
 }
 
