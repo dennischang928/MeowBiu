@@ -5,7 +5,7 @@
   "idf.openOcdConfigs": [
     "board/esp32c3-builtin.cfg"
   ],
-  "idf.port": "/dev/tty.usbmodem101",
+  "idf.port": "/dev/tty.usbmodem2101",
   "idf.toolsPath": "/Users/dennischang/.espressif",
   "idf.customExtraVars": {
     "IDF_TARGET": "esp32c3"
@@ -63,6 +63,23 @@
     "idle_look_right_loop.h": "c",
     "sad_start.h": "c",
     "sad_loop.h": "c",
-    "scared_loop.h": "c"
+    "scared_loop.h": "c",
+    "ui_service.h": "c",
+    "esp_err.h": "c",
+    "service_manager.h": "c",
+    "service_base.h": "c",
+    "event_bus.h": "c",
+    "stdbool.h": "c",
+    "string.h": "c",
+    "esp_event.h": "c",
+    "gpio.h": "c",
+    "input_service.h": "c",
+    "chrono": "c",
+    "text_encoding": "c",
+    "typeinfo": "c",
+    "esp_system.h": "c",
+    "esp_random.h": "c",
+    "queue.h": "c",
+    "clock_ui.h": "c"
   }
 }

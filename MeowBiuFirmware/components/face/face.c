@@ -146,7 +146,7 @@ static emotion_assets_t emotion_assets[] = {
     [EMOTION_SCARED] = {
         .start_frames = (const void **)scared_start_anim_frames,
         .start_frame_count = SCARED_START_ANIM_FRAME_COUNT,
-        .start_end_frame_duration = 750,
+        .start_end_frame_duration = 600,
         .loop_frames = (const void **)scared_loop_anim_frames,
         .loop_frame_count = SCARED_LOOP_ANIM_FRAME_COUNT,
         .loop_frame_duration = 1240,
@@ -161,7 +161,6 @@ static emotion_assets_t emotion_assets[] = {
         .loop_frame_duration = 1240,
         .loop_repeat_count = 1,
     },
-
     // Add more emotions here
 };
 
@@ -174,6 +173,7 @@ static void handle_transition(void);
 static void configure_animation(const void **frames, uint32_t count, uint32_t duration,
                                 uint16_t repeat, lv_anim_completed_cb_t callback)
 {
+  lv_lock();
   if (frames)
   {
     lv_animimg_set_src(animimg, frames, count);
@@ -194,6 +194,7 @@ static void configure_animation(const void **frames, uint32_t count, uint32_t du
   lv_animimg_start(animimg);
   lv_image_set_antialias(animimg, true);
   lv_image_set_scale(animimg, 384);
+  lv_unlock();
 }
 
 static void on_reverse_finished(lv_anim_t *anim)
@@ -278,15 +279,17 @@ static void play_reverse_animation(void)
 {
   emotion_t emotion = face_state.current_emotion;
 
-  if (emotion == EMOTION_IDLE || !emotion_assets[emotion].start_frames)
+  if (!emotion_assets[emotion].start_frames)
   {
     return;
   }
 
   face_state.anim_state = ANIM_STATE_REVERSE;
 
+  lv_lock();
   lv_animimg_set_src_reverse(animimg, emotion_assets[emotion].start_frames,
                              emotion_assets[emotion].start_frame_count);
+  lv_unlock();
   configure_animation(NULL, 0, emotion_assets[emotion].start_end_frame_duration, 1, on_reverse_finished);
 }
 
@@ -312,18 +315,38 @@ void face_set_loop_count(emotion_t emotion, uint8_t count)
   ESP_LOGI(TAG, "Loop repeat count set to %d", count);
 }
 
+// void face_get_loop_count(emotion_t emotion){
+//   return emotion_assets[emotion].loop_repeat_count;
+// }
+
 // Public API
 void face_init(void)
 {
   if (animimg == NULL)
   {
+    lv_lock();
     animimg = lv_animimg_create(lv_screen_active());
+    lv_unlock();
   }
 
   face_state.current_emotion = EMOTION_IDLE;
   face_state.target_emotion = EMOTION_IDLE;
   face_state.anim_state = ANIM_STATE_START;
   face_state.transition_pending = false;
+}
+
+void face_hide(void)
+{
+  lv_lock();
+  lv_obj_add_flag(animimg, LV_OBJ_FLAG_HIDDEN);
+  lv_unlock();
+}
+
+void face_show(void)
+{
+  lv_lock();
+  lv_obj_clear_flag(animimg, LV_OBJ_FLAG_HIDDEN);
+  lv_unlock();
 }
 
 void face_set_emotion(emotion_t new_emotion)
