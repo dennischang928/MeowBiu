@@ -47,7 +47,10 @@ static void print_memory_stats(void *pvParameters) {
     lv_mem_monitor(&mon);
     ESP_LOGI(TAG, "LVGL Memory - Free: %d bytes, Fragmentation: %d%%",
              mon.free_size, mon.frag_pct);
-    vTaskDelay(pdMS_TO_TICKS(5000));
+    ESP_LOGI("display", "DMA+INTERNAL free: %u, largest block: %u",
+         heap_caps_get_free_size(MALLOC_CAP_DMA | MALLOC_CAP_INTERNAL),
+         heap_caps_get_largest_free_block(MALLOC_CAP_DMA | MALLOC_CAP_INTERNAL));
+    vTaskDelay(pdMS_TO_TICKS(1000));
   }
 }
 
@@ -56,13 +59,14 @@ void app_main(void) {
   // disable input_service logs
   esp_log_level_set("input_service", ESP_LOG_NONE);
   esp_log_level_set("face", ESP_LOG_NONE);
-  esp_log_level_set("main", ESP_LOG_NONE);
+  // esp_log_level_set("main", ESP_LOG_NONE);
   esp_log_level_set("event_bus", ESP_LOG_NONE);
   esp_log_level_set("clock_ui", ESP_LOG_NONE);
   esp_log_level_set("rtc_service", ESP_LOG_NONE);
 
   // Register LVGL log callback
   lv_log_register_print_cb(lvgl_log_callback);
+  xTaskCreate(print_memory_stats, "mem_stats", 2048, NULL, 1, NULL);
 
   // Initialize hardware
   SPI_Setup();
@@ -77,9 +81,10 @@ void app_main(void) {
   service_manager_register(&input_service);
   service_manager_register(&rtc_service);
   service_manager_register(&network_service);
+
+  
   service_manager_start_all();
 
   // Create memory stats task
-  // xTaskCreate(print_memory_stats, "mem_stats", 2048, NULL, 1, NULL);
   ESP_LOGI(TAG, "System running");
 }

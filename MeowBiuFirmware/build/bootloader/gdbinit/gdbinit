@@ -1,0 +1,2 @@
+source /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/bootloader/gdbinit/symbols
+source /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/bootloader/gdbinit/connect

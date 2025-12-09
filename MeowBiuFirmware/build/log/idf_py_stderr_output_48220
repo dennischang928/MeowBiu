@@ -1,0 +1,30 @@
+Command: /Users/dennischang/.espressif/python_env/idf5.5_py3.12_env/bin/python /Users/dennischang/esp/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem2101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/TFT_SPI_IDF.elf /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/bootloader/bootloader.elf -m '/Users/dennischang/.espressif/python_env/idf5.5_py3.12_env/bin/python' '/Users/dennischang/esp/esp-idf/tools/idf.py'
+[0;33m--- esp-idf-monitor 1.8.0 on /dev/cu.usbmodem2101 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x4004c0d4: [0;33muart_tx_one_char_uart.part.0[0m[0m in [0;32mROM[0m
+[0m--- 0x403cbf10: [0;33mesp_bootloader_get_description[0m[0m at [0;32m/Users/dennischang/esp/esp-idf/components/esp_bootloader_format/esp_bootloader_desc.c[0m[0m:[1;31m38[0m
+[0m--- 0x403ce710: [0;33mesp_flash_encryption_enabled[0m[0m at [0;32m/Users/dennischang/esp/esp-idf/components/bootloader_support/src/flash_encrypt.c[0m[0m:[1;31m87[0m
+[0m--- 0x403cbf28: [0;33mcall_start_cpu0[0m[0m at [0;32m/Users/dennischang/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x4201986a: [0;33mlv_inv_area[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/core/lv_refr.c[0m[0m:[1;31m277[0m
+[0m--- 0x42012c40: [0;33mlv_obj_invalidate_area[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/core/lv_obj_pos.c[0m[0m:[1;31m847[0m
+[0m--- 0x42012c9c: [0;33mlv_obj_invalidate[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/core/lv_obj_pos.c[0m[0m:[1;31m864[0m
+[0m--- 0x420353d2: [0;33mlv_label_refr_text[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/widgets/label/lv_label.c[0m[0m:[1;31m1210[0m
+[0m--- 0x420358fe: [0;33mlv_label_set_text[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/widgets/label/lv_label.c[0m[0m:[1;31m173[0m
+[0m--- 0x4200ed40: [0;33mclock_ui_set_date[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/clock_ui/clock_ui.c[0m[0m:[1;31m420[0m
+[0m--- 0x4200a5a6: [0;33mtime_update_callback[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/ui_service/ui_service.c[0m[0m:[1;31m158[0m
+[0m--- 0x4200df98: [0;33mevent_bus_post[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/service_manager/event_bus.c[0m[0m:[1;31m145[0m
+[0m--- 0x4200d7a0: [0;33mtick_timer_callback[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/rtc_service/rtc_service.c[0m[0m:[1;31m218[0m
+[0m--- 0x42050668: [0;33mtimer_process_alarm[0m[0m at [0;32m/Users/dennischang/esp/esp-idf/components/esp_timer/src/esp_timer.c[0m[0m:[1;31m436[0m
+[0m--- 0x42050752: [0;33mtimer_task[0m[0m at [0;32m/Users/dennischang/esp/esp-idf/components/esp_timer/src/esp_timer.c[0m[0m:[1;31m458[0m
+[0m--- 0x4201986a: [0;33mlv_inv_area[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/core/lv_refr.c[0m[0m:[1;31m277[0m
+[0m--- 0x42012c40: [0;33mlv_obj_invalidate_area[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/core/lv_obj_pos.c[0m[0m:[1;31m847[0m
+[0m--- 0x42012c9c: [0;33mlv_obj_invalidate[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/core/lv_obj_pos.c[0m[0m:[1;31m864[0m
+[0m--- 0x420353d2: [0;33mlv_label_refr_text[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/widgets/label/lv_label.c[0m[0m:[1;31m1210[0m
+[0m--- 0x420358fe: [0;33mlv_label_set_text[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl/src/widgets/label/lv_label.c[0m[0m:[1;31m173[0m
+[0m--- 0x4200ed40: [0;33mclock_ui_set_date[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/clock_ui/clock_ui.c[0m[0m:[1;31m420[0m
+[0m--- 0x4200a5a6: [0;33mtime_update_callback[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/ui_service/ui_service.c[0m[0m:[1;31m158[0m
+[0m--- 0x4200df98: [0;33mevent_bus_post[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/service_manager/event_bus.c[0m[0m:[1;31m145[0m
+[0m--- 0x4200d7a0: [0;33mtick_timer_callback[0m[0m at [0;32m/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/rtc_service/rtc_service.c[0m[0m:[1;31m218[0m
+[0m--- 0x42050668: [0;33mtimer_process_alarm[0m[0m at [0;32m/Users/dennischang/esp/esp-idf/components/esp_timer/src/esp_timer.c[0m[0m:[1;31m436[0m
+[0m--- 0x42050752: [0;33mtimer_task[0m[0m at [0;32m/Users/dennischang/esp/esp-idf/components/esp_timer/src/esp_timer.c[0m[0m:[1;31m458[0m
+[0m

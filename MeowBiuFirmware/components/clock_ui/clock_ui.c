@@ -143,18 +143,29 @@ static void create_analog_clock_layout(void) {
   lv_obj_set_style_line_color(hour_hand, lv_color_make(255, 255, 255), 0);
   lv_obj_set_style_line_width(hour_hand, 6, 0);
   lv_obj_set_style_line_rounded(hour_hand, true, 0);
+  lv_obj_set_size(hour_hand, scale_size, scale_size);
+  lv_obj_center(hour_hand);
 
   // Create minute hand
   minute_hand = lv_line_create(clock_container);
   lv_obj_set_style_line_color(minute_hand, lv_color_make(255, 255, 255), 0);
   lv_obj_set_style_line_width(minute_hand, 4, 0);
   lv_obj_set_style_line_rounded(minute_hand, true, 0);
+  lv_obj_set_size(minute_hand, scale_size, scale_size);
+  lv_obj_center(minute_hand);
 
   // Create second hand
   second_hand = lv_line_create(clock_container);
   lv_obj_set_style_line_color(second_hand, lv_color_make(255, 200, 200), 0);
   lv_obj_set_style_line_width(second_hand, 2, 0);
   lv_obj_set_style_line_rounded(second_hand, true, 0);
+  lv_obj_set_size(second_hand, scale_size, scale_size);
+  lv_obj_center(second_hand);
+
+  // Set padding of clock hands to 0 to fix alignment issue
+  lv_obj_set_style_pad_all(hour_hand, 0, 0);
+  lv_obj_set_style_pad_all(minute_hand, 0, 0);
+  lv_obj_set_style_pad_all(second_hand, 0, 0);
 
   // Create center dot
   center_dot = lv_obj_create(clock_container);
@@ -215,11 +226,13 @@ static void clock_ui_update_async_cb(void *data) {
   // No need for lv_lock() here as this runs in LVGL thread
 
   if (current_mode == CLOCK_FACE_TEXT) {
-    // Update time label for text mode (HH:MM:SS)
+    // Update time label for text mode (hh:MM:SS in 12-hour format)
     if (time_label) {
-      char time_str[9];
-      snprintf(time_str, sizeof(time_str), "%02d:%02d:%02d", hour, minute,
-               second);
+      int display_hour = hour % 12;
+      display_hour = display_hour == 0 ? 12 : display_hour;
+      char time_str[16];
+      snprintf(time_str, sizeof(time_str), "%02d:%02d:%02d", display_hour,
+               minute, second);
       lv_label_set_text(time_label, time_str);
     }
   } else {

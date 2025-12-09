@@ -1,0 +1,69 @@
+Command: ninja flash
+[1/5] cd /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/esptool_py && /Users/dennischang/.espressif/python_env/idf5.5_py3.12_env/bin/python /Users/dennischang/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/partition_table/partition-table.bin /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/TFT_SPI_IDF.bin
+TFT_SPI_IDF.bin binary size 0xde690 bytes. Smallest app partition is 0x100000 bytes. 0x21970 bytes (13%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/bootloader/esp-idf/esptool_py && /Users/dennischang/.espressif/python_env/idf5.5_py3.12_env/bin/python /Users/dennischang/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/bootloader/bootloader.bin
+Bootloader binary size 0x5800 bytes. 0x2800 bytes (31%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] cd /Users/dennischang/esp/esp-idf/components/esptool_py && /opt/homebrew/bin/cmake -D IDF_PATH=/Users/dennischang/esp/esp-idf -D "SERIAL_TOOL=/Users/dennischang/.espressif/python_env/idf5.5_py3.12_env/bin/python;;/Users/dennischang/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32c3" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build -P /Users/dennischang/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32c3 -p /dev/cu.usbmodem2101 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 2MB 0x0 bootloader/bootloader.bin 0x10000 TFT_SPI_IDF.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.10.0
+Serial port /dev/cu.usbmodem2101
+Connecting...
+Chip is ESP32-C3 (QFN32) (revision v0.4)
+Features: WiFi, BLE, Embedded Flash 4MB (XMC)
+Crystal is 40MHz
+USB mode: USB-Serial/JTAG
+MAC: 94:a9:90:7b:d1:78
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000eefff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 22528 bytes to 13800...
+Writing at 0x00000000... (100 %)
+Wrote 22528 bytes (13800 compressed) at 0x00000000 in 0.4 seconds (effective 418.1 kbit/s)...
+Hash of data verified.
+Compressed 910992 bytes to 441268...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001bfd7... (7 %)
+Writing at 0x000250d6... (11 %)
+Writing at 0x0002d586... (14 %)
+Writing at 0x00035b9c... (18 %)
+Writing at 0x0003e5e1... (22 %)
+Writing at 0x0004a3a0... (25 %)
+Writing at 0x0005c912... (29 %)
+Writing at 0x00063024... (33 %)
+Writing at 0x00069c9d... (37 %)
+Writing at 0x00071452... (40 %)
+Writing at 0x0007888e... (44 %)
+Writing at 0x0008073a... (48 %)
+Writing at 0x000882dc... (51 %)
+Writing at 0x0008ec19... (55 %)
+Writing at 0x00096014... (59 %)
+Writing at 0x0009dfe6... (62 %)
+Writing at 0x000a4bbe... (66 %)
+Writing at 0x000aba33... (70 %)
+Writing at 0x000b24a8... (74 %)
+Writing at 0x000b8aa3... (77 %)
+Writing at 0x000c0132... (81 %)
+Writing at 0x000c91bc... (85 %)
+Writing at 0x000d0816... (88 %)
+Writing at 0x000d7f29... (92 %)
+Writing at 0x000def57... (96 %)
+Writing at 0x000e70f5... (100 %)
+Wrote 910992 bytes (441268 compressed) at 0x00010000 in 6.7 seconds (effective 1088.9 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 346.1 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

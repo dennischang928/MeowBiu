@@ -1,0 +1,404 @@
+Command: /Users/dennischang/.espressif/python_env/idf5.5_py3.12_env/bin/python /Users/dennischang/esp/esp-idf/tools/idf_monitor.py -p /dev/cu.usbmodem2101 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/TFT_SPI_IDF.elf /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/bootloader/bootloader.elf -m '/Users/dennischang/.espressif/python_env/idf5.5_py3.12_env/bin/python' '/Users/dennischang/esp/esp-idf/tools/idf.py'
+[0;32mI (328) spi_flash: flash io: dio[0m
+[0;33mW (330) spi_fESP-ROM:esp32c3-api1-20210207[0m
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xd (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4004c0d4
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x15ac
+load:0x403cbf10,len:0xd2c
+load:0x403ce710,len:0x34c8
+entry 0x403cbf28
+[0;32mI (24) boot: ESP-IDF v5.5.1-dirty 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Dec  9 2025 12:27:19[0m
+[0;32mI (25) boot: chip revision: v0.4[0m
+[0;32mI (25) boot: efuse block revision: v1.3[0m
+[0;32mI (29) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32c3: SPI Flash Size : 2MB[0m
+[0;32mI (40) boot: Enabling RNG early entropy source...[0m
+[0;32mI (44) boot: Partition Table:[0m
+[0;32mI (47) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (53) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (60) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (66) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (73) boot: End of partition table[0m
+[0;32mI (76) esp_image: segment 0: paddr=00010020 vaddr=3c080020 size=4d178h (315768) map[0m
+[0;32mI (134) esp_image: segment 1: paddr=0005d1a0 vaddr=3fc92c00 size=01aech (  6892) load[0m
+[0;32mI (136) esp_image: segment 2: paddr=0005ec94 vaddr=40380000 size=01384h (  4996) load[0m
+[0;32mI (139) esp_image: segment 3: paddr=00060020 vaddr=42000020 size=71e8ch (466572) map[0m
+[0;32mI (220) esp_image: segment 4: paddr=000d1eb4 vaddr=40381384 size=11770h ( 71536) load[0m
+[0;32mI (233) esp_image: segment 5: paddr=000e362c vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (239) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (239) boot: Disabling RNG early entropy source...[0m
+[0;32mI (251) cpu_start: Unicore app[0m
+[0;32mI (260) cpu_start: Pro cpu start user code[0m
+[0;32mI (260) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (260) app_init: Application information:[0m
+[0;32mI (260) app_init: Project name:     TFT_SPI_IDF[0m
+[0;32mI (264) app_init: App version:      29a9f5d-dirty[0m
+[0;32mI (269) app_init: Compile time:     Dec  9 2025 12:35:04[0m
+[0;32mI (274) app_init: ELF file SHA256:  b08686373...[0m
+[0;32mI (278) app_init: ESP-IDF:          v5.5.1-dirty[0m
+[0;32mI (282) efuse_init: Min chip rev:     v0.3[0m
+[0;32mI (286) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (290) efuse_init: Chip rev:         v0.4[0m
+[0;32mI (294) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (300) heap_init: At 3FCADAE0 len 00012520 (73 KiB): RAM[0m
+[0;32mI (305) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (311) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (317) heap_init: At 50000020 len 00001FC8 (7 KiB): RTCRAM[0m
+[0;32mI (324) spi_flash: detected chip: generic[0m
+[0;32mI (326) spi_flash: flash io: dio[0m
+[0;33mW (329) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (342) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (351) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (357) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (364) main_task: Started on CPU0[0m
+[0;32mI (367) main_task: Calling app_main()[0m
+[0;32mI (370) main: Initializing system...[0m
+[0;32mI (373) main: LVGL Memory - Free: 0 bytes, Fragmentation: 0%[0m
+[0;32mI (374) display: Initializing SPI bus[0m
+[0;32mI (382) display: Configuring panel IO[0m
+[0;32mI (378) display: DMA+INTERNAL free: 182080, largest block: 114688[0m
+D (387) lcd_panel.io.spi: new spi lcd panel io @0x3fcb26e8, max_trans_bytes: 32768
+[0;32mI (398) display: Installing GC9A01 panel driver[0m
+[0;32mI (403) gc9a01: LCD panel create success, version: 2.0.4[0m
+[0;32mI (508) display: Initializing display[0m
+[0;33mW (608) gc9a01: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (730) display: Turning on display[0m
+[0;32mI (750) display: Display initialization complete[0m
+[0;32mI (750) display: Initializing LVGL[0m
+[0;32mI (758) display: LVGL init complete (Buffer: 70 lines, 50400 bytes)[0m
+[0;32mI (758) service_manager: Initializing service manager[0m
+[0;32mI (758) service_manager: Registered service: ui_service[0m
+[0;32mI (763) service_manager: Registered service: input_service[0m
+[0;32mI (768) service_manager: Registered service: rtc_service[0m
+[0;32mI (773) service_manager: Starting 3 services[0m
+[0;32mI (777) service_manager: Initializing: ui_service[0m
+[0;32mI (795) ui_service: Starting in FACE mode[0m
+[0;32mI (803) service_manager: Initializing: input_service[0m
+[0;32mI (804) service_manager: Initializing: rtc_service[0m
+[0;32mI (805) service_manager: Starting: ui_service[0m
+[0;32mI (912) ui_service: LVGL task created successfully[0m
+[0;32mI (915) behavior_task: [Pick] NORMAL mood (80%)[0m
+[0;32mI (916) behavior_task: [Delay] Waiting 25 seconds before next mood change[0m
+[0;32mI (916) ui_service: Behavior task created successfully[0m
+[0;32mI (926) ui_service: normal_mood_callback[0m
+[0;32mI (1041) service_manager: Starting: input_service[0m
+[0;32mI (1041) service_manager: Starting: rtc_service[0m
+[0;32mI (1041) service_manager: All services running![0m
+[0;32mI (1043) main: System running[0m
+[0;32mI (1062) main_task: Returned from app_main()[0m
+[0;32mI (1391) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (1391) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (2392) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (2392) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (3397) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (3398) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (3486) ui_service: normal_mood_callback[0m
+[0;32mI (4398) main: LVGL Memory - Free: 88000 bytes, Fragmentation: 1%[0m
+[0;32mI (4398) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (5398) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (5398) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (6052) ui_service: Switching from mode 0 to mode 1[0m
+[0;32mI (6053) ui_service: behavior_task SUSPENDED[0m
+[0;32mI (6053) ui_service: Single tap detected - switching to clock UI[0m
+[0;32mI (6457) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (6458) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (7117) ui_service: normal_mood_callback: Initiating blink[0m
+[0;32mI (7458) main: LVGL Memory - Free: 87948 bytes, Fragmentation: 1%[0m
+[0;32mI (7458) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (8459) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (8459) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (9460) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (9460) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (10461) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (10461) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (10649) ui_service: normal_mood_callback: Ending blink[0m
+[0;32mI (10649) ui_service: Setting NORMAL mood with emotion 4 with 4 loop[0m
+[0;32mI (11462) main: LVGL Memory - Free: 87896 bytes, Fragmentation: 1%[0m
+[0;32mI (11462) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (12463) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (12463) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (13464) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (13464) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (14114) ui_service: 8-second timer expired, switching back to face UI[0m
+[0;32mI (14114) ui_service: Switching from mode 1 to mode 0[0m
+[0;32mI (14115) behavior_task: [Pick] NORMAL mood (80%)[0m
+[0;32mI (14119) behavior_task: [Delay] Waiting 23 seconds before next mood change[0m
+[0;32mI (14135) ui_service: normal_mood_callback[0m
+[0;32mI (14234) ui_service: behavior_task RESUMED[0m
+[0;32mI (14465) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (14465) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (15466) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (15466) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (16467) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (16467) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (17468) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (17468) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (18469) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (18469) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (19470) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (19470) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (20212) ui_service: normal_mood_callback[0m
+[0;32mI (20471) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (20471) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (21481) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (21482) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (22483) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (22483) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (23484) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (23484) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (24485) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (24485) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (25486) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (25486) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (26487) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (26487) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (27488) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (27488) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (28489) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (28489) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (29490) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (29490) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (29761) ui_service: normal_mood_callback[0m
+[0;32mI (30491) main: LVGL Memory - Free: 88000 bytes, Fragmentation: 1%[0m
+[0;32mI (30491) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (31492) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (31492) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (32493) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (32493) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (33494) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (33494) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (34495) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (34495) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (35496) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (35496) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (36497) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (36497) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (37135) behavior_task: [Pick] NORMAL mood (80%)[0m
+[0;32mI (37135) behavior_task: [Delay] Waiting 29 seconds before next mood change[0m
+[0;32mI (37145) ui_service: normal_mood_callback[0m
+[0;32mI (37498) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (37498) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (38499) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (38499) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (39335) ui_service: normal_mood_callback[0m
+[0;32mI (39500) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (39500) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (40501) main: LVGL Memory - Free: 88048 bytes, Fragmentation: 1%[0m
+[0;32mI (40501) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (41502) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (41502) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (42503) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (42503) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (43504) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (43504) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (44505) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (44505) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (45506) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (45506) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (46507) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (46507) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (47508) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (47508) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (48509) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (48509) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (48881) ui_service: normal_mood_callback: Initiating blink[0m
+[0;32mI (49510) main: LVGL Memory - Free: 87896 bytes, Fragmentation: 1%[0m
+[0;32mI (49510) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (50511) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (50511) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (51512) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (51512) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (51834) ui_service: normal_mood_callback: Ending blink[0m
+[0;32mI (51834) ui_service: Setting NORMAL mood with emotion 0 with 6 loop[0m
+[0;32mI (52513) main: LVGL Memory - Free: 88000 bytes, Fragmentation: 1%[0m
+[0;32mI (52513) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (53514) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (53514) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (54515) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (54515) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (55516) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (55516) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (56517) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (56517) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (57518) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (57518) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (58519) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (58519) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (59520) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (59520) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (60521) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (60521) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (61522) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (61522) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (62523) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (62523) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (63524) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (63524) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (64525) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (64525) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (65526) main: LVGL Memory - Free: 88156 bytes, Fragmentation: 1%[0m
+[0;32mI (65526) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (66145) behavior_task: [Pick] SPECIAL mood 2 (20%)[0m
+[0;32mI (66145) behavior_task: [Delay] Waiting 18 seconds before next mood change[0m
+[0;32mI (66527) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (66527) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (67528) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (67528) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (68529) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (68529) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (69530) main: LVGL Memory - Free: 88000 bytes, Fragmentation: 1%[0m
+[0;32mI (69530) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (70536) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (70537) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (71540) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (71541) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (72542) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (72542) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (73547) main: LVGL Memory - Free: 88048 bytes, Fragmentation: 1%[0m
+[0;32mI (73548) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (74548) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (74548) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (75549) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (75549) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (76550) main: LVGL Memory - Free: 88000 bytes, Fragmentation: 1%[0m
+[0;32mI (76550) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (77551) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (77551) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (78560) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (78561) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (79562) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (79562) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (80566) main: LVGL Memory - Free: 88048 bytes, Fragmentation: 1%[0m
+[0;32mI (80567) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (81569) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (81570) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (82571) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (82571) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (83572) main: LVGL Memory - Free: 88000 bytes, Fragmentation: 1%[0m
+[0;32mI (83572) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (84156) behavior_task: [Pick] NORMAL mood (80%)[0m
+[0;32mI (84156) behavior_task: [Delay] Waiting 19 seconds before next mood change[0m
+[0;32mI (84166) ui_service: normal_mood_callback[0m
+[0;32mI (84580) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (84581) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (85589) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (85590) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (86124) ui_service: normal_mood_callback[0m
+[0;32mI (86591) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (86591) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (87597) main: LVGL Memory - Free: 88048 bytes, Fragmentation: 1%[0m
+[0;32mI (87598) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (88598) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (88598) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (89600) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (89601) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (89620) ui_service: normal_mood_callback[0m
+[0;32mI (90602) main: LVGL Memory - Free: 88000 bytes, Fragmentation: 1%[0m
+[0;32mI (90602) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (91603) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (91603) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (92604) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (92604) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (93122) ui_service: normal_mood_callback[0m
+[0;32mI (93605) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (93605) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (94606) main: LVGL Memory - Free: 88048 bytes, Fragmentation: 1%[0m
+[0;32mI (94606) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (95607) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (95607) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (96608) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (96608) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (96618) ui_service: normal_mood_callback[0m
+[0;32mI (97609) main: LVGL Memory - Free: 88000 bytes, Fragmentation: 1%[0m
+[0;32mI (97609) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (98610) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (98610) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (99611) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (99611) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (100124) ui_service: normal_mood_callback: Initiating blink[0m
+[0;32mI (100612) main: LVGL Memory - Free: 87948 bytes, Fragmentation: 1%[0m
+[0;32mI (100612) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (101613) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (101613) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (102614) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (102614) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (103166) behavior_task: [Pick] NORMAL mood (80%)[0m
+[0;32mI (103166) behavior_task: [Delay] Waiting 23 seconds before next mood change[0m
+[0;32mI (103176) ui_service: normal_mood_callback[0m
+[0;32mI (103384) ui_service: normal_mood_callback[0m
+[0;32mI (103615) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (103615) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (104616) main: LVGL Memory - Free: 88048 bytes, Fragmentation: 1%[0m
+[0;32mI (104616) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (105619) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (105620) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (106611) ui_service: normal_mood_callback: Initiating blink[0m
+[0;32mI (106621) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (106621) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (107624) main: LVGL Memory - Free: 88048 bytes, Fragmentation: 1%[0m
+[0;32mI (107624) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (108625) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (108625) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (109626) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (109626) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (110175) ui_service: normal_mood_callback: Ending blink[0m
+[0;32mI (110175) ui_service: Setting NORMAL mood with emotion 4 with 4 loop[0m
+[0;32mI (110627) main: LVGL Memory - Free: 87948 bytes, Fragmentation: 1%[0m
+[0;32mI (110627) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (111628) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (111628) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (112629) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (112629) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (113630) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (113630) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (114631) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (114631) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (115632) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (115632) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (116633) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (116633) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (117634) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (117634) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (118635) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (118635) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (119636) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (119636) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (119723) ui_service: normal_mood_callback: Initiating blink[0m
+[0;32mI (120637) main: LVGL Memory - Free: 87896 bytes, Fragmentation: 1%[0m
+[0;32mI (120637) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (121638) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (121638) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (122639) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (122639) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (122986) ui_service: normal_mood_callback: Ending blink[0m
+[0;32mI (122986) ui_service: Setting NORMAL mood with emotion 4 with 7 loop[0m
+[0;32mI (123640) main: LVGL Memory - Free: 87896 bytes, Fragmentation: 1%[0m
+[0;32mI (123640) display: DMA+INTERNAL free: 53532, largest block: 23552[0m
+[0;32mI (124641) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (124641) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (125642) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (125642) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (126176) behavior_task: [Pick] NORMAL mood (80%)[0m
+[0;32mI (126176) behavior_task: [Delay] Waiting 11 seconds before next mood change[0m
+[0;32mI (126186) ui_service: normal_mood_callback: Initiating blink[0m
+[0;32mI (126643) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (126643) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (127644) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (127644) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (128645) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (128645) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (129646) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (129646) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (130647) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (130647) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (131648) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (131648) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (132649) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (132649) display: DMA+INTERNAL free: 53548, largest block: 23552[0m
+[0;32mI (133650) main: LVGL Memory - Free: 88052 bytes, Fragmentation: 1%[0m
+[0;32mI (133650) display: DMA+INTERNAL free: 53548, largest block: 23552[0m

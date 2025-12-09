@@ -31,7 +31,7 @@
 #define LCD_V_RES                   240
 #define LCD_CMD_BITS                8
 #define LCD_PARAM_BITS              8
-#define LCD_BUFFER_LINES            100  // Half screen for optimal performance
+#define LCD_BUFFER_LINES            70  // Half screen for optimal performance
 
 // Pin Configuration
 #define PIN_LCD_SCLK                8
