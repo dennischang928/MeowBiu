@@ -165,7 +165,9 @@
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/clock_ui/libclock_ui.a
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/rtc_service/librtc_service.a
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/input_service/libinput_service.a
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/lib78__esp-wifi-connect.a
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/network_service/libnetwork_service.a
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/lib78__esp-wifi-connect.a
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/main/libmain.a
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/display/libdisplay.a
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/ui_service/libui_service.a

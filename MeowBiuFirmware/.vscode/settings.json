@@ -80,6 +80,9 @@
     "esp_system.h": "c",
     "esp_random.h": "c",
     "queue.h": "c",
-    "clock_ui.h": "c"
+    "clock_ui.h": "c",
+    "face_old_fashioned.h": "c",
+    "face_registry.h": "c",
+    "time.h": "c"
   }
 }

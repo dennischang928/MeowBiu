@@ -1,4 +1,14 @@
 dependencies:
+  78/esp-wifi-connect:
+    component_hash: 1e0017389ae95c259160e82252d3d322ffd90a3ce62503810f8fa45677f89637
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=5.3'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 3.0.1
   espressif/cmake_utilities:
     component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
     dependencies:
@@ -28,8 +38,9 @@ dependencies:
       type: idf
     version: 5.5.1
 direct_dependencies:
+- 78/esp-wifi-connect
 - espressif/esp_lcd_gc9a01
 - idf
-manifest_hash: fde220b91954e4f5a14e2554da08705e0d4119d69e0c686d8ac024250d798af5
+manifest_hash: 4086225f94362814172d176c7eb4b8dea7dbd36f1142daa75804b906cbdbe740
 target: esp32c3
 version: 2.0.0

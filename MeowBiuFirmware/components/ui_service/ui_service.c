@@ -259,8 +259,7 @@ static void double_tap_detected_callback(event_id_t event_id, void *event_data,
   if (angry_animation_playing) {
     return;
   }
-
-  clock_face_toggle_mode();
+  // clock_face_set_mode(new_face_index);
   ESP_LOGI(TAG, "Double tap detected");
 }
 
@@ -414,8 +413,6 @@ esp_err_t ui_init(service_t *svc) {
   // Subscribe to RTC time updates
   event_bus_subscribe(APP_EVENT_TIME_UPDATE, time_update_callback, NULL);
 
-  // Set initial clock mode
-  clock_face_set_mode(CLOCK_FACE_OLD_FASHION);
 
   return ESP_OK;
 }

@@ -57,9 +57,12 @@ static void print_memory_stats(void *pvParameters) {
 void app_main(void) {
   ESP_LOGI(TAG, "Initializing system...");
   // disable input_service logs
+  // esp_log_level_set("network_service", ESP_LOG_NONE);
+  esp_log_level_set("ui_service", ESP_LOG_NONE);
+  esp_log_level_set("display", ESP_LOG_NONE);
   esp_log_level_set("input_service", ESP_LOG_NONE);
   esp_log_level_set("face", ESP_LOG_NONE);
-  // esp_log_level_set("main", ESP_LOG_NONE);
+  esp_log_level_set("main", ESP_LOG_NONE);
   esp_log_level_set("event_bus", ESP_LOG_NONE);
   esp_log_level_set("clock_ui", ESP_LOG_NONE);
   esp_log_level_set("rtc_service", ESP_LOG_NONE);

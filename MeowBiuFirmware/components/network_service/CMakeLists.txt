@@ -8,6 +8,7 @@ idf_component_register(
         esp_wifi
         nvs_flash
         lwip
+        esp-wifi-connect
     PRIV_REQUIRES
         service_manager
 )

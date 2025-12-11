@@ -165,7 +165,9 @@ $<TARGET_FILE:__idf_face>
 $<TARGET_FILE:__idf_clock_ui>
 $<TARGET_FILE:__idf_rtc_service>
 $<TARGET_FILE:idf::input_service>
+$<TARGET_FILE:idf::78__esp-wifi-connect>
 $<TARGET_FILE:idf::network_service>
+$<TARGET_FILE:__idf_78__esp-wifi-connect>
 $<TARGET_FILE:idf::main>
 $<TARGET_FILE:__idf_display>
 $<TARGET_FILE:__idf_ui_service>

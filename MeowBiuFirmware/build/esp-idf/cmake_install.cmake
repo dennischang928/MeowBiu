@@ -604,6 +604,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/network_service/cmake_install.cmake")
 endif()
 

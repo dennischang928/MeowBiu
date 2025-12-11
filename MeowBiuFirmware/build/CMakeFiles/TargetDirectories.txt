@@ -151,6 +151,13 @@
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/esp_bootloader_format/CMakeFiles/install/local.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/esp_bootloader_format/CMakeFiles/install/strip.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/__idf_app_update.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/blank_ota_data.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/read-otadata.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/read_otadata.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/erase-otadata.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/erase_otadata.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/otadata-flash.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/encrypted-otadata-flash.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/edit_cache.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/rebuild_cache.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/app_update/CMakeFiles/list_install_components.dir
@@ -896,6 +903,13 @@
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/input_service/CMakeFiles/install.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/input_service/CMakeFiles/install/local.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/input_service/CMakeFiles/install/strip.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/CMakeFiles/__idf_78__esp-wifi-connect.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/CMakeFiles/edit_cache.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/CMakeFiles/rebuild_cache.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/CMakeFiles/list_install_components.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/CMakeFiles/install.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/CMakeFiles/install/local.dir
+/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/CMakeFiles/install/strip.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/network_service/CMakeFiles/__idf_network_service.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/network_service/CMakeFiles/edit_cache.dir
 /Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/network_service/CMakeFiles/rebuild_cache.dir

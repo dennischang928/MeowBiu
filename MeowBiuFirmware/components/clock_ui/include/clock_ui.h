@@ -1,21 +1,16 @@
 #ifndef CLOCK_UI_H
 #define CLOCK_UI_H
 
+#include <stddef.h>
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-    typedef enum
-    {
-        CLOCK_FACE_TEXT,
-        CLOCK_FACE_OLD_FASHION,
-    } clock_face_t;
 
-    void clock_face_set_mode(clock_face_t mode);
-    void clock_face_toggle_mode(void);
+
+    void clock_face_set_mode(size_t new_face_index);
     void clock_ui_init(void);
-    void clock_ui_layout_init(void);
     void clock_ui_show(void);
     void clock_ui_hide(void);
     void clock_ui_set_time(int hour, int minute, int second);
