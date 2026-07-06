@@ -17,3 +17,4 @@ dependencies:
   # lvgl/lvgl: ^9.3.0
   espressif/esp_lcd_gc9a01: '*'
   78/esp-wifi-connect: ^3.0.1
+  espressif/cjson: ^1.7.19

@@ -1,6 +1,7 @@
 idf_component_register(
     SRCS 
         "network_service.c"
+        "get_connected/get_connected.c"
     INCLUDE_DIRS 
         "include"
     REQUIRES
@@ -9,6 +10,7 @@ idf_component_register(
         nvs_flash
         lwip
         esp-wifi-connect
+        cjson
     PRIV_REQUIRES
         service_manager
 )

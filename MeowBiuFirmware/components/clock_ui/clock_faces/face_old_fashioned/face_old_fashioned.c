@@ -2,6 +2,7 @@
 #include "lvgl.h"
 #include <math.h>
 #include "esp_log.h"
+#include "network_service.h"
 
 static const char *TAG = "face_old_fashioned";
 
@@ -9,6 +10,7 @@ static const char *TAG = "face_old_fashioned";
 static lv_obj_t *clock_container = NULL;
 static lv_obj_t *date_label = NULL;
 static lv_obj_t *day_label = NULL;
+static lv_obj_t *weather_label = NULL;
 
 // Analog clock objects
 static lv_obj_t *scale = NULL;
@@ -130,6 +132,14 @@ static void init_old_fashioned(void)
     lv_label_set_text(day_label, "MONDAY");
     lv_obj_align(day_label, LV_ALIGN_CENTER, 0, 35);
 
+    // Weather label near top
+    weather_label = lv_label_create(clock_container);
+    lv_obj_set_style_text_font(weather_label, &lv_font_montserrat_14, 0);
+    lv_obj_set_style_text_color(weather_label, lv_color_make(200, 200, 200), 0);
+    lv_obj_set_style_text_opa(weather_label, LV_OPA_80, 0);
+    lv_label_set_text(weather_label, "--.-F  --%");
+    lv_obj_align(weather_label, LV_ALIGN_CENTER, 0, -70);
+
     lv_obj_add_flag(clock_container, LV_OBJ_FLAG_HIDDEN);
     
     lv_unlock();
@@ -248,6 +258,17 @@ static void set_date_old_fashioned(int year, int month, int day, int weekoftheda
     }
 }
 
+static void set_weather_old_fashioned(const weather_data_t *data)
+{
+    if (!data || !weather_label)
+        return;
+
+    char buf[24];
+    snprintf(buf, sizeof(buf), "%.1fF %d%%", data->temperature_f,
+             data->relative_humidity);
+    lv_label_set_text(weather_label, buf);
+}
+
 const clock_face_t face_old_fashioned = {
     .id = "old_fashioned",
     .name = "Old Fashioned",
@@ -257,4 +278,6 @@ const clock_face_t face_old_fashioned = {
     .destroy = destroy_old_fashioned,
     .set_time = set_time_old_fashioned,
     .set_date = set_date_old_fashioned,
+    .weather_compatible = true,
+    .set_weather = set_weather_old_fashioned,
 };

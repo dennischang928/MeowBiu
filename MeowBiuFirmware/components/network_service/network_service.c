@@ -5,153 +5,111 @@
 
 #include "network_service.h"
 #include "service_manager.h"
+#include "event_bus.h"
 #include "esp_log.h"
 #include "esp_wifi.h"
 #include "esp_http_client.h"
 #include "nvs_flash.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "cJSON.h"
 #include <assert.h>
 #include <string.h>
 
+#include "./get_connected/get_connected.h"
+
 static const char *TAG = "network_service";
 static bool wifi_connected = false;
-static char http_response_buffer[2048] = {0};
-static int http_response_len = 0;
 
-/* Buffer HTTP response chunks and log when complete */
-static esp_err_t _http_event_handler(esp_http_client_event_t *evt)
-{
-  switch (evt->event_id)
-  {
-  case HTTP_EVENT_ON_DATA:
-    int remaining = sizeof(http_response_buffer) - http_response_len - 1;
-    if (remaining > 0)
-    {
-      int to_copy = (evt->data_len < remaining) ? evt->data_len : remaining;
-      memcpy(http_response_buffer + http_response_len, evt->data, to_copy);
-      http_response_len += to_copy;
-      http_response_buffer[http_response_len] = '\0';
-    }
-    break;
-  case HTTP_EVENT_ON_FINISH:
-    if (http_response_len > 0)
-    {
-      ESP_LOGI(TAG, "Response: %s", http_response_buffer);
-      http_response_len = 0;
-    }
-    break;
-  default:
-    break;
-  }
-  return ESP_OK;
-}
-
-/* Make HTTP GET request */
-esp_err_t network_service_test_request(void)
-{
-  esp_http_client_config_t config = {
-      .url = "http://api.open-meteo.com/v1/forecast"
-             "?latitude=40.20522222944286&longitude=-76.7417407532657"
-             "&current=temperature_2m,relative_humidity_2m"
-             "&timezone=auto&forecast_days=3&wind_speed_unit=mph"
-             "&temperature_unit=fahrenheit&precipitation_unit=inch",
-      .event_handler = _http_event_handler,
-  };
-
-  esp_http_client_handle_t client = esp_http_client_init(&config);
-  esp_err_t err = esp_http_client_perform(client);
-
-  if (err == ESP_OK)
-    ESP_LOGI(TAG, "HTTP Status: %d", esp_http_client_get_status_code(client));
-  else
-    ESP_LOGE(TAG, "HTTP failed: %s", esp_err_to_name(err));
-
-  esp_http_client_cleanup(client);
-  return err;
-}
-
-/* WiFi connection state management */
-static void _wifi_event_handler(void *arg, esp_event_base_t event_base,
-                                int32_t event_id, void *event_data)
-{
-  if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START)
-    esp_wifi_connect();
-  else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED)
-  {
-    wifi_connected = false;
-    esp_wifi_connect();
-  }
-  else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP)
-  {
-    wifi_connected = true;
-    ip_event_got_ip_t *event = (ip_event_got_ip_t *)event_data;
-    ESP_LOGI(TAG, "Connected! IP: " IPSTR, IP2STR(&event->ip_info.ip));
-  }
-}
-
-/* Periodic HTTP requests after WiFi connects */
 static void _test_request_task(void *arg)
 {
-  while (!wifi_connected)
+  while (!is_connected())
     vTaskDelay(pdMS_TO_TICKS(1000));
 
   while (1)
   {
-    network_service_test_request();
-    vTaskDelay(pdMS_TO_TICKS(1000*60)); //60 min
+    test_request();
+    vTaskDelay(pdMS_TO_TICKS(1000 * 10)); // 10 seconds
   }
+}
+
+void weather_task_cb(const char *response)
+{
+    weather_data_t data = {0};
+
+    if (response) {
+        ESP_LOGI(TAG, "Weather API Response: %s", response);
+        cJSON *root = cJSON_Parse(response);
+        if (root) {
+            cJSON *lat = cJSON_GetObjectItemCaseSensitive(root, "latitude");
+            cJSON *lon = cJSON_GetObjectItemCaseSensitive(root, "longitude");
+            if (cJSON_IsNumber(lat))
+                data.latitude = lat->valuedouble;
+            if (cJSON_IsNumber(lon))
+                data.longitude = lon->valuedouble;
+
+            cJSON *current = cJSON_GetObjectItemCaseSensitive(root, "current");
+            if (cJSON_IsObject(current)) {
+                cJSON *temp = cJSON_GetObjectItemCaseSensitive(current, "temperature_2m");
+                cJSON *rh = cJSON_GetObjectItemCaseSensitive(current, "relative_humidity_2m");
+                cJSON *time = cJSON_GetObjectItemCaseSensitive(current, "time");
+
+                if (cJSON_IsNumber(temp))
+                    data.temperature_f = temp->valuedouble;
+                if (cJSON_IsNumber(rh))
+                    data.relative_humidity = (int)rh->valuedouble;
+                if (cJSON_IsString(time) && time->valuestring)
+                    strlcpy(data.time_iso, time->valuestring, sizeof(data.time_iso));
+            }
+            cJSON_Delete(root);
+        } else {
+            ESP_LOGW(TAG, "Failed to parse weather JSON");
+        }
+    } else {
+        ESP_LOGW(TAG, "Weather API Response is NULL");
+    }
+    ESP_LOGI(TAG, "Parsed Weather Data: Temp=%.2fF, Humidity=%d%%, Lat=%.4f, Lon=%.4f, Time=%s",
+             data.temperature_f, data.relative_humidity, data.latitude,
+             data.longitude, data.time_iso);
+
+    event_bus_post(APP_EVENT_WEATHER_UPDATED, &data);
+}
+
+static void weather_task(void *arg)
+{
+    while (!is_connected()) {
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+
+    while (1) {
+        get_request(
+            "http://api.open-meteo.com/v1/forecast"
+            "?latitude=40.19721&longitude=-76.74883"
+            "&current=temperature_2m,relative_humidity_2m"
+            "&timezone=auto&forecast_days=3&wind_speed_unit=mph"
+            "&temperature_unit=fahrenheit&precipitation_unit=inch",
+            weather_task_cb   // type: void (*)(const char *)
+        );
+
+        vTaskDelay(pdMS_TO_TICKS(10 * 1000)); // 10 seconds
+    }
 }
 
 /* Initialize NVS storage */
 esp_err_t network_service_init(service_t *service)
 {
-  esp_err_t ret = nvs_flash_init();
-  if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
-  {
-    ESP_ERROR_CHECK(nvs_flash_erase());
-    ret = nvs_flash_init();
-  }
-  return ret;
+  esp_err_t err = get_connected_init();
+  esp_err_t start_err = get_connected_start();
+  return err == ESP_OK ? start_err : err;
 }
+
+
 
 /* Start WiFi and create HTTP task */
 esp_err_t network_service_start(service_t *service)
 {
-  ESP_ERROR_CHECK(esp_netif_init());
-  ESP_ERROR_CHECK(esp_event_loop_create_default());
-  esp_netif_t *sta_netif = esp_netif_create_default_wifi_sta();
-  assert(sta_netif);
-
-  /* Configure WiFi buffers for minimal RAM usage */
-  wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-  cfg.static_rx_buf_num = 4;
-  cfg.dynamic_rx_buf_num = 4;
-  cfg.dynamic_tx_buf_num = 4;
-  cfg.nvs_enable = 0;
-  cfg.feature_caps = 0;
-
-  ESP_ERROR_CHECK(esp_wifi_init(&cfg));
-  ESP_ERROR_CHECK(esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &_wifi_event_handler, NULL, NULL));
-  ESP_ERROR_CHECK(esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &_wifi_event_handler, NULL, NULL));
-
-  /* Apply WiFi credentials and start connection */
-  wifi_config_t wifi_config = {
-      .sta = {
-          .ssid = DEFAULT_SSID,
-          .password = DEFAULT_PWD,
-          .scan_method = DEFAULT_SCAN_METHOD,
-          .sort_method = DEFAULT_SORT_METHOD,
-          .threshold.authmode = DEFAULT_AUTHMODE,
-      },
-  };
-
-  ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-  ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
-  ESP_ERROR_CHECK(esp_wifi_start());
-  ESP_ERROR_CHECK(esp_wifi_set_max_tx_power(80));
-
-  xTaskCreate(_test_request_task, "network_test", 6144, NULL, 1, NULL);
+  // xTaskCreate(&_test_request_task, "test_request_task", 4096, NULL, 5, NULL);
+  xTaskCreate(&weather_task, "weather_task", 4096, NULL, 5, NULL);
   return ESP_OK;
 }
 

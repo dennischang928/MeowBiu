@@ -12,5 +12,6 @@ idf_component_register(
         face           # Face service is implementation detail
         service_manager
         clock_ui
+        network_service  # For weather updates
         rtc_service    # For time updates
 )

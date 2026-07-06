@@ -15,6 +15,10 @@ typedef enum {
   APP_EVENT_SPAM_TAP_DETECTED, // Posted when user taps too rapidly
   APP_EVENT_TIME_UPDATE, // Posted by RTC service every second with rtc_time_t*
                          // data
+  APP_EVENT_WIFI_CREDENTIALS_CHANGED, // Payload: wifi_credentials_event_t*
+  APP_EVENT_WIFI_STATUS,              // Payload: wifi_status_event_t*
+  APP_EVENT_WEATHER_UPDATED,          // Payload: weather_data_t*
+  APP_EVENT_STOCKS_UPDATED,           // Payload: http_response_event_t*
 } event_id_t;
 
 typedef void (*event_callback_t)(event_id_t event_id, void *event_data,

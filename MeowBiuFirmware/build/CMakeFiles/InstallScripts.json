@@ -125,11 +125,12 @@
 		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/face/cmake_install.cmake",
 		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/service_manager/cmake_install.cmake",
 		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/rtc_service/cmake_install.cmake",
+		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/cmake_install.cmake",
+		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/espressif__cjson/cmake_install.cmake",
+		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/network_service/cmake_install.cmake",
 		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/clock_ui/cmake_install.cmake",
 		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/ui_service/cmake_install.cmake",
 		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/input_service/cmake_install.cmake",
-		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/78__esp-wifi-connect/cmake_install.cmake",
-		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/network_service/cmake_install.cmake",
 		"/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/main/cmake_install.cmake"
 	],
 	"Parallel" : false

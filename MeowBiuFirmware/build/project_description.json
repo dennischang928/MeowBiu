@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "TFT_SPI_IDF",
-    "project_version":    "40e66ad-dirty",
+    "project_version":    "477fa3c-dirty",
     "project_path":       "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware",
     "idf_path":           "/Users/dennischang/esp/esp-idf",
     "build_dir":          "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build",
@@ -25,8 +25,8 @@
         "COMPONENT_KCONFIGS_PROJBUILD" : "/Users/dennischang/esp/esp-idf/components/bootloader/Kconfig.projbuild;/Users/dennischang/esp/esp-idf/components/esp_app_format/Kconfig.projbuild;/Users/dennischang/esp/esp-idf/components/esp_rom/Kconfig.projbuild;/Users/dennischang/esp/esp-idf/components/esptool_py/Kconfig.projbuild;/Users/dennischang/esp/esp-idf/components/partition_table/Kconfig.projbuild"
     },
     "common_component_reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "soc", "hal", "esp_rom", "esp_common", "esp_system", "riscv" ],
-    "build_components" : [ "78__esp-wifi-connect", "app_trace", "app_update", "bootloader", "bootloader_support", "bt", "clock_ui", "cmock", "console", "cxx", "display", "driver", "efuse", "esp-tls", "esp_adc", "esp_app_format", "esp_bootloader_format", "esp_coex", "esp_common", "esp_driver_ana_cmpr", "esp_driver_bitscrambler", "esp_driver_cam", "esp_driver_dac", "esp_driver_gpio", "esp_driver_gptimer", "esp_driver_i2c", "esp_driver_i2s", "esp_driver_isp", "esp_driver_jpeg", "esp_driver_ledc", "esp_driver_mcpwm", "esp_driver_parlio", "esp_driver_pcnt", "esp_driver_ppa", "esp_driver_rmt", "esp_driver_sdio", "esp_driver_sdm", "esp_driver_sdmmc", "esp_driver_sdspi", "esp_driver_spi", "esp_driver_touch_sens", "esp_driver_tsens", "esp_driver_twai", "esp_driver_uart", "esp_driver_usb_serial_jtag", "esp_eth", "esp_event", "esp_gdbstub", "esp_hid", "esp_http_client", "esp_http_server", "esp_https_ota", "esp_https_server", "esp_hw_support", "esp_lcd", "esp_local_ctrl", "esp_mm", "esp_netif", "esp_netif_stack", "esp_partition", "esp_phy", "esp_pm", "esp_psram", "esp_ringbuf", "esp_rom", "esp_security", "esp_system", "esp_timer", "esp_vfs_console", "esp_wifi", "espcoredump", "espressif__cmake_utilities", "espressif__esp_lcd_gc9a01", "esptool_py", "face", "fatfs", "freertos", "hal", "heap", "http_parser", "idf_test", "ieee802154", "input_service", "json", "log", "lvgl", "lwip", "main", "mbedtls", "mqtt", "network_service", "newlib", "nvs_flash", "nvs_sec_provider", "openthread", "partition_table", "protobuf-c", "protocomm", "pthread", "riscv", "rt", "rtc_service", "sdmmc", "service_manager", "soc", "spi_flash", "spiffs", "tcp_transport", "ui_service", "ulp", "unity", "usb", "vfs", "wear_levelling", "wifi_provisioning", "wpa_supplicant", "" ],
-    "build_component_paths" : [ "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/78__esp-wifi-connect", "/Users/dennischang/esp/esp-idf/components/app_trace", "/Users/dennischang/esp/esp-idf/components/app_update", "/Users/dennischang/esp/esp-idf/components/bootloader", "/Users/dennischang/esp/esp-idf/components/bootloader_support", "/Users/dennischang/esp/esp-idf/components/bt", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/clock_ui", "/Users/dennischang/esp/esp-idf/components/cmock", "/Users/dennischang/esp/esp-idf/components/console", "/Users/dennischang/esp/esp-idf/components/cxx", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/display", "/Users/dennischang/esp/esp-idf/components/driver", "/Users/dennischang/esp/esp-idf/components/efuse", "/Users/dennischang/esp/esp-idf/components/esp-tls", "/Users/dennischang/esp/esp-idf/components/esp_adc", "/Users/dennischang/esp/esp-idf/components/esp_app_format", "/Users/dennischang/esp/esp-idf/components/esp_bootloader_format", "/Users/dennischang/esp/esp-idf/components/esp_coex", "/Users/dennischang/esp/esp-idf/components/esp_common", "/Users/dennischang/esp/esp-idf/components/esp_driver_ana_cmpr", "/Users/dennischang/esp/esp-idf/components/esp_driver_bitscrambler", "/Users/dennischang/esp/esp-idf/components/esp_driver_cam", "/Users/dennischang/esp/esp-idf/components/esp_driver_dac", "/Users/dennischang/esp/esp-idf/components/esp_driver_gpio", "/Users/dennischang/esp/esp-idf/components/esp_driver_gptimer", "/Users/dennischang/esp/esp-idf/components/esp_driver_i2c", "/Users/dennischang/esp/esp-idf/components/esp_driver_i2s", "/Users/dennischang/esp/esp-idf/components/esp_driver_isp", "/Users/dennischang/esp/esp-idf/components/esp_driver_jpeg", "/Users/dennischang/esp/esp-idf/components/esp_driver_ledc", "/Users/dennischang/esp/esp-idf/components/esp_driver_mcpwm", "/Users/dennischang/esp/esp-idf/components/esp_driver_parlio", "/Users/dennischang/esp/esp-idf/components/esp_driver_pcnt", "/Users/dennischang/esp/esp-idf/components/esp_driver_ppa", "/Users/dennischang/esp/esp-idf/components/esp_driver_rmt", "/Users/dennischang/esp/esp-idf/components/esp_driver_sdio", "/Users/dennischang/esp/esp-idf/components/esp_driver_sdm", "/Users/dennischang/esp/esp-idf/components/esp_driver_sdmmc", "/Users/dennischang/esp/esp-idf/components/esp_driver_sdspi", "/Users/dennischang/esp/esp-idf/components/esp_driver_spi", "/Users/dennischang/esp/esp-idf/components/esp_driver_touch_sens", "/Users/dennischang/esp/esp-idf/components/esp_driver_tsens", "/Users/dennischang/esp/esp-idf/components/esp_driver_twai", "/Users/dennischang/esp/esp-idf/components/esp_driver_uart", "/Users/dennischang/esp/esp-idf/components/esp_driver_usb_serial_jtag", "/Users/dennischang/esp/esp-idf/components/esp_eth", "/Users/dennischang/esp/esp-idf/components/esp_event", "/Users/dennischang/esp/esp-idf/components/esp_gdbstub", "/Users/dennischang/esp/esp-idf/components/esp_hid", "/Users/dennischang/esp/esp-idf/components/esp_http_client", "/Users/dennischang/esp/esp-idf/components/esp_http_server", "/Users/dennischang/esp/esp-idf/components/esp_https_ota", "/Users/dennischang/esp/esp-idf/components/esp_https_server", "/Users/dennischang/esp/esp-idf/components/esp_hw_support", "/Users/dennischang/esp/esp-idf/components/esp_lcd", "/Users/dennischang/esp/esp-idf/components/esp_local_ctrl", "/Users/dennischang/esp/esp-idf/components/esp_mm", "/Users/dennischang/esp/esp-idf/components/esp_netif", "/Users/dennischang/esp/esp-idf/components/esp_netif_stack", "/Users/dennischang/esp/esp-idf/components/esp_partition", "/Users/dennischang/esp/esp-idf/components/esp_phy", "/Users/dennischang/esp/esp-idf/components/esp_pm", "/Users/dennischang/esp/esp-idf/components/esp_psram", "/Users/dennischang/esp/esp-idf/components/esp_ringbuf", "/Users/dennischang/esp/esp-idf/components/esp_rom", "/Users/dennischang/esp/esp-idf/components/esp_security", "/Users/dennischang/esp/esp-idf/components/esp_system", "/Users/dennischang/esp/esp-idf/components/esp_timer", "/Users/dennischang/esp/esp-idf/components/esp_vfs_console", "/Users/dennischang/esp/esp-idf/components/esp_wifi", "/Users/dennischang/esp/esp-idf/components/espcoredump", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__cmake_utilities", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__esp_lcd_gc9a01", "/Users/dennischang/esp/esp-idf/components/esptool_py", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/face", "/Users/dennischang/esp/esp-idf/components/fatfs", "/Users/dennischang/esp/esp-idf/components/freertos", "/Users/dennischang/esp/esp-idf/components/hal", "/Users/dennischang/esp/esp-idf/components/heap", "/Users/dennischang/esp/esp-idf/components/http_parser", "/Users/dennischang/esp/esp-idf/components/idf_test", "/Users/dennischang/esp/esp-idf/components/ieee802154", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/input_service", "/Users/dennischang/esp/esp-idf/components/json", "/Users/dennischang/esp/esp-idf/components/log", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl", "/Users/dennischang/esp/esp-idf/components/lwip", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/main", "/Users/dennischang/esp/esp-idf/components/mbedtls", "/Users/dennischang/esp/esp-idf/components/mqtt", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/network_service", "/Users/dennischang/esp/esp-idf/components/newlib", "/Users/dennischang/esp/esp-idf/components/nvs_flash", "/Users/dennischang/esp/esp-idf/components/nvs_sec_provider", "/Users/dennischang/esp/esp-idf/components/openthread", "/Users/dennischang/esp/esp-idf/components/partition_table", "/Users/dennischang/esp/esp-idf/components/protobuf-c", "/Users/dennischang/esp/esp-idf/components/protocomm", "/Users/dennischang/esp/esp-idf/components/pthread", "/Users/dennischang/esp/esp-idf/components/riscv", "/Users/dennischang/esp/esp-idf/components/rt", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/rtc_service", "/Users/dennischang/esp/esp-idf/components/sdmmc", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/service_manager", "/Users/dennischang/esp/esp-idf/components/soc", "/Users/dennischang/esp/esp-idf/components/spi_flash", "/Users/dennischang/esp/esp-idf/components/spiffs", "/Users/dennischang/esp/esp-idf/components/tcp_transport", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/ui_service", "/Users/dennischang/esp/esp-idf/components/ulp", "/Users/dennischang/esp/esp-idf/components/unity", "/Users/dennischang/esp/esp-idf/components/usb", "/Users/dennischang/esp/esp-idf/components/vfs", "/Users/dennischang/esp/esp-idf/components/wear_levelling", "/Users/dennischang/esp/esp-idf/components/wifi_provisioning", "/Users/dennischang/esp/esp-idf/components/wpa_supplicant", "" ],
+    "build_components" : [ "78__esp-wifi-connect", "app_trace", "app_update", "bootloader", "bootloader_support", "bt", "clock_ui", "cmock", "console", "cxx", "display", "driver", "efuse", "esp-tls", "esp_adc", "esp_app_format", "esp_bootloader_format", "esp_coex", "esp_common", "esp_driver_ana_cmpr", "esp_driver_bitscrambler", "esp_driver_cam", "esp_driver_dac", "esp_driver_gpio", "esp_driver_gptimer", "esp_driver_i2c", "esp_driver_i2s", "esp_driver_isp", "esp_driver_jpeg", "esp_driver_ledc", "esp_driver_mcpwm", "esp_driver_parlio", "esp_driver_pcnt", "esp_driver_ppa", "esp_driver_rmt", "esp_driver_sdio", "esp_driver_sdm", "esp_driver_sdmmc", "esp_driver_sdspi", "esp_driver_spi", "esp_driver_touch_sens", "esp_driver_tsens", "esp_driver_twai", "esp_driver_uart", "esp_driver_usb_serial_jtag", "esp_eth", "esp_event", "esp_gdbstub", "esp_hid", "esp_http_client", "esp_http_server", "esp_https_ota", "esp_https_server", "esp_hw_support", "esp_lcd", "esp_local_ctrl", "esp_mm", "esp_netif", "esp_netif_stack", "esp_partition", "esp_phy", "esp_pm", "esp_psram", "esp_ringbuf", "esp_rom", "esp_security", "esp_system", "esp_timer", "esp_vfs_console", "esp_wifi", "espcoredump", "espressif__cjson", "espressif__cmake_utilities", "espressif__esp_lcd_gc9a01", "esptool_py", "face", "fatfs", "freertos", "hal", "heap", "http_parser", "idf_test", "ieee802154", "input_service", "json", "log", "lvgl", "lwip", "main", "mbedtls", "mqtt", "network_service", "newlib", "nvs_flash", "nvs_sec_provider", "openthread", "partition_table", "protobuf-c", "protocomm", "pthread", "riscv", "rt", "rtc_service", "sdmmc", "service_manager", "soc", "spi_flash", "spiffs", "tcp_transport", "ui_service", "ulp", "unity", "usb", "vfs", "wear_levelling", "wifi_provisioning", "wpa_supplicant", "" ],
+    "build_component_paths" : [ "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/78__esp-wifi-connect", "/Users/dennischang/esp/esp-idf/components/app_trace", "/Users/dennischang/esp/esp-idf/components/app_update", "/Users/dennischang/esp/esp-idf/components/bootloader", "/Users/dennischang/esp/esp-idf/components/bootloader_support", "/Users/dennischang/esp/esp-idf/components/bt", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/clock_ui", "/Users/dennischang/esp/esp-idf/components/cmock", "/Users/dennischang/esp/esp-idf/components/console", "/Users/dennischang/esp/esp-idf/components/cxx", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/display", "/Users/dennischang/esp/esp-idf/components/driver", "/Users/dennischang/esp/esp-idf/components/efuse", "/Users/dennischang/esp/esp-idf/components/esp-tls", "/Users/dennischang/esp/esp-idf/components/esp_adc", "/Users/dennischang/esp/esp-idf/components/esp_app_format", "/Users/dennischang/esp/esp-idf/components/esp_bootloader_format", "/Users/dennischang/esp/esp-idf/components/esp_coex", "/Users/dennischang/esp/esp-idf/components/esp_common", "/Users/dennischang/esp/esp-idf/components/esp_driver_ana_cmpr", "/Users/dennischang/esp/esp-idf/components/esp_driver_bitscrambler", "/Users/dennischang/esp/esp-idf/components/esp_driver_cam", "/Users/dennischang/esp/esp-idf/components/esp_driver_dac", "/Users/dennischang/esp/esp-idf/components/esp_driver_gpio", "/Users/dennischang/esp/esp-idf/components/esp_driver_gptimer", "/Users/dennischang/esp/esp-idf/components/esp_driver_i2c", "/Users/dennischang/esp/esp-idf/components/esp_driver_i2s", "/Users/dennischang/esp/esp-idf/components/esp_driver_isp", "/Users/dennischang/esp/esp-idf/components/esp_driver_jpeg", "/Users/dennischang/esp/esp-idf/components/esp_driver_ledc", "/Users/dennischang/esp/esp-idf/components/esp_driver_mcpwm", "/Users/dennischang/esp/esp-idf/components/esp_driver_parlio", "/Users/dennischang/esp/esp-idf/components/esp_driver_pcnt", "/Users/dennischang/esp/esp-idf/components/esp_driver_ppa", "/Users/dennischang/esp/esp-idf/components/esp_driver_rmt", "/Users/dennischang/esp/esp-idf/components/esp_driver_sdio", "/Users/dennischang/esp/esp-idf/components/esp_driver_sdm", "/Users/dennischang/esp/esp-idf/components/esp_driver_sdmmc", "/Users/dennischang/esp/esp-idf/components/esp_driver_sdspi", "/Users/dennischang/esp/esp-idf/components/esp_driver_spi", "/Users/dennischang/esp/esp-idf/components/esp_driver_touch_sens", "/Users/dennischang/esp/esp-idf/components/esp_driver_tsens", "/Users/dennischang/esp/esp-idf/components/esp_driver_twai", "/Users/dennischang/esp/esp-idf/components/esp_driver_uart", "/Users/dennischang/esp/esp-idf/components/esp_driver_usb_serial_jtag", "/Users/dennischang/esp/esp-idf/components/esp_eth", "/Users/dennischang/esp/esp-idf/components/esp_event", "/Users/dennischang/esp/esp-idf/components/esp_gdbstub", "/Users/dennischang/esp/esp-idf/components/esp_hid", "/Users/dennischang/esp/esp-idf/components/esp_http_client", "/Users/dennischang/esp/esp-idf/components/esp_http_server", "/Users/dennischang/esp/esp-idf/components/esp_https_ota", "/Users/dennischang/esp/esp-idf/components/esp_https_server", "/Users/dennischang/esp/esp-idf/components/esp_hw_support", "/Users/dennischang/esp/esp-idf/components/esp_lcd", "/Users/dennischang/esp/esp-idf/components/esp_local_ctrl", "/Users/dennischang/esp/esp-idf/components/esp_mm", "/Users/dennischang/esp/esp-idf/components/esp_netif", "/Users/dennischang/esp/esp-idf/components/esp_netif_stack", "/Users/dennischang/esp/esp-idf/components/esp_partition", "/Users/dennischang/esp/esp-idf/components/esp_phy", "/Users/dennischang/esp/esp-idf/components/esp_pm", "/Users/dennischang/esp/esp-idf/components/esp_psram", "/Users/dennischang/esp/esp-idf/components/esp_ringbuf", "/Users/dennischang/esp/esp-idf/components/esp_rom", "/Users/dennischang/esp/esp-idf/components/esp_security", "/Users/dennischang/esp/esp-idf/components/esp_system", "/Users/dennischang/esp/esp-idf/components/esp_timer", "/Users/dennischang/esp/esp-idf/components/esp_vfs_console", "/Users/dennischang/esp/esp-idf/components/esp_wifi", "/Users/dennischang/esp/esp-idf/components/espcoredump", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__cjson", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__cmake_utilities", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__esp_lcd_gc9a01", "/Users/dennischang/esp/esp-idf/components/esptool_py", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/face", "/Users/dennischang/esp/esp-idf/components/fatfs", "/Users/dennischang/esp/esp-idf/components/freertos", "/Users/dennischang/esp/esp-idf/components/hal", "/Users/dennischang/esp/esp-idf/components/heap", "/Users/dennischang/esp/esp-idf/components/http_parser", "/Users/dennischang/esp/esp-idf/components/idf_test", "/Users/dennischang/esp/esp-idf/components/ieee802154", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/input_service", "/Users/dennischang/esp/esp-idf/components/json", "/Users/dennischang/esp/esp-idf/components/log", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/lvgl", "/Users/dennischang/esp/esp-idf/components/lwip", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/main", "/Users/dennischang/esp/esp-idf/components/mbedtls", "/Users/dennischang/esp/esp-idf/components/mqtt", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/network_service", "/Users/dennischang/esp/esp-idf/components/newlib", "/Users/dennischang/esp/esp-idf/components/nvs_flash", "/Users/dennischang/esp/esp-idf/components/nvs_sec_provider", "/Users/dennischang/esp/esp-idf/components/openthread", "/Users/dennischang/esp/esp-idf/components/partition_table", "/Users/dennischang/esp/esp-idf/components/protobuf-c", "/Users/dennischang/esp/esp-idf/components/protocomm", "/Users/dennischang/esp/esp-idf/components/pthread", "/Users/dennischang/esp/esp-idf/components/riscv", "/Users/dennischang/esp/esp-idf/components/rt", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/rtc_service", "/Users/dennischang/esp/esp-idf/components/sdmmc", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/service_manager", "/Users/dennischang/esp/esp-idf/components/soc", "/Users/dennischang/esp/esp-idf/components/spi_flash", "/Users/dennischang/esp/esp-idf/components/spiffs", "/Users/dennischang/esp/esp-idf/components/tcp_transport", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/ui_service", "/Users/dennischang/esp/esp-idf/components/ulp", "/Users/dennischang/esp/esp-idf/components/unity", "/Users/dennischang/esp/esp-idf/components/usb", "/Users/dennischang/esp/esp-idf/components/vfs", "/Users/dennischang/esp/esp-idf/components/wear_levelling", "/Users/dennischang/esp/esp-idf/components/wifi_provisioning", "/Users/dennischang/esp/esp-idf/components/wpa_supplicant", "" ],
     "build_component_info" : {
         "78__esp-wifi-connect": {
             "alias": "idf::78__esp-wifi-connect",
@@ -125,7 +125,7 @@
             "dir": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/clock_ui",
             "type": "LIBRARY",
             "lib": "__idf_clock_ui",
-            "reqs": [ "lvgl" ],
+            "reqs": [ "lvgl", "network_service" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
@@ -1093,6 +1093,21 @@
             "sources": [ "/Users/dennischang/esp/esp-idf/components/espcoredump/src/core_dump_init.c", "/Users/dennischang/esp/esp-idf/components/espcoredump/src/core_dump_common.c", "/Users/dennischang/esp/esp-idf/components/espcoredump/src/core_dump_flash.c", "/Users/dennischang/esp/esp-idf/components/espcoredump/src/core_dump_uart.c", "/Users/dennischang/esp/esp-idf/components/espcoredump/src/core_dump_elf.c", "/Users/dennischang/esp/esp-idf/components/espcoredump/src/core_dump_binary.c", "/Users/dennischang/esp/esp-idf/components/espcoredump/src/core_dump_sha.c", "/Users/dennischang/esp/esp-idf/components/espcoredump/src/core_dump_crc.c", "/Users/dennischang/esp/esp-idf/components/espcoredump/src/port/riscv/core_dump_port.c" ],
             "include_dirs": [ "include", "include/port/riscv" ]
         },
+        "espressif__cjson": {
+            "alias": "idf::espressif__cjson",
+            "target": "___idf_espressif__cjson",
+            "prefix": "idf",
+            "dir": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__cjson",
+            "type": "LIBRARY",
+            "lib": "__idf_espressif__cjson",
+            "reqs": [],
+            "priv_reqs": [],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "file": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/espressif__cjson/libespressif__cjson.a",
+            "sources": [ "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__cjson/cJSON/cJSON.c", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__cjson/cJSON/cJSON_Utils.c" ],
+            "include_dirs": [ "cJSON" ]
+        },
         "espressif__cmake_utilities": {
             "alias": "idf::espressif__cmake_utilities",
             "target": "___idf_espressif__cmake_utilities",
@@ -1341,9 +1356,9 @@
             "type": "LIBRARY",
             "lib": "__idf_main",
             "reqs": [ "display", "face", "lvgl", "service_manager", "rtc_service", "ui_service", "input_service", "network_service" ],
-            "priv_reqs": [ "78__esp-wifi-connect", "espressif__esp_lcd_gc9a01" ],
+            "priv_reqs": [ "78__esp-wifi-connect", "espressif__cjson", "espressif__esp_lcd_gc9a01" ],
             "managed_reqs": [],
-            "managed_priv_reqs": [ "78__esp-wifi-connect", "espressif__esp_lcd_gc9a01" ],
+            "managed_priv_reqs": [ "78__esp-wifi-connect", "espressif__cjson", "espressif__esp_lcd_gc9a01" ],
             "file": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/main/libmain.a",
             "sources": [ "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/main/main.c" ],
             "include_dirs": [ "." ]
@@ -1385,12 +1400,12 @@
             "dir": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/network_service",
             "type": "LIBRARY",
             "lib": "__idf_network_service",
-            "reqs": [ "esp_http_client", "esp_wifi", "nvs_flash", "lwip", "78__esp-wifi-connect" ],
+            "reqs": [ "esp_http_client", "esp_wifi", "nvs_flash", "lwip", "78__esp-wifi-connect", "espressif__cjson" ],
             "priv_reqs": [ "service_manager" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/network_service/libnetwork_service.a",
-            "sources": [ "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/network_service/network_service.c" ],
+            "sources": [ "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/network_service/network_service.c", "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/network_service/get_connected/get_connected.c" ],
             "include_dirs": [ "include" ]
         },
         "newlib": {
@@ -1656,7 +1671,7 @@
             "type": "LIBRARY",
             "lib": "__idf_ui_service",
             "reqs": [],
-            "priv_reqs": [ "lvgl", "face", "service_manager", "clock_ui", "rtc_service" ],
+            "priv_reqs": [ "lvgl", "face", "service_manager", "clock_ui", "network_service", "rtc_service" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/build/esp-idf/ui_service/libui_service.a",
@@ -3073,9 +3088,9 @@
             "dir": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/main",
             "lib": "__idf_main",
             "reqs": [ "display", "face", "lvgl", "service_manager", "rtc_service", "ui_service", "input_service", "network_service" ],
-            "priv_reqs": [ "78__esp-wifi-connect", "espressif__esp_lcd_gc9a01" ],
+            "priv_reqs": [ "78__esp-wifi-connect", "espressif__cjson", "espressif__esp_lcd_gc9a01" ],
             "managed_reqs": [],
-            "managed_priv_reqs": [ "78__esp-wifi-connect", "espressif__esp_lcd_gc9a01" ],
+            "managed_priv_reqs": [ "78__esp-wifi-connect", "espressif__cjson", "espressif__esp_lcd_gc9a01" ],
             "include_dirs": [ "." ]
         },
         "clock_ui": {
@@ -3084,7 +3099,7 @@
             "prefix": "idf",
             "dir": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/clock_ui",
             "lib": "__idf_clock_ui",
-            "reqs": [ "lvgl" ],
+            "reqs": [ "lvgl", "network_service" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
@@ -3144,7 +3159,7 @@
             "prefix": "idf",
             "dir": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/network_service",
             "lib": "__idf_network_service",
-            "reqs": [ "esp_http_client", "esp_wifi", "nvs_flash", "lwip", "78__esp-wifi-connect" ],
+            "reqs": [ "esp_http_client", "esp_wifi", "nvs_flash", "lwip", "78__esp-wifi-connect", "espressif__cjson" ],
             "priv_reqs": [ "service_manager" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
@@ -3181,7 +3196,7 @@
             "dir": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/components/ui_service",
             "lib": "__idf_ui_service",
             "reqs": [],
-            "priv_reqs": [ "lvgl", "face", "service_manager", "clock_ui", "rtc_service" ],
+            "priv_reqs": [ "lvgl", "face", "service_manager", "clock_ui", "network_service", "rtc_service" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": [ "include" ]
@@ -3197,6 +3212,18 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": [ "include" ]
+        },
+        "espressif__cjson": {
+            "alias": "idf::espressif__cjson",
+            "target": "___idf_espressif__cjson",
+            "prefix": "idf",
+            "dir": "/Users/dennischang/Documents/MeowBiu/MeowBiuFirmware/managed_components/espressif__cjson",
+            "lib": "__idf_espressif__cjson",
+            "reqs": [],
+            "priv_reqs": [],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "include_dirs": [ "cJSON" ]
         },
         "espressif__cmake_utilities": {
             "alias": "idf::espressif__cmake_utilities",

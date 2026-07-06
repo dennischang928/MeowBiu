@@ -111,4 +111,6 @@ const clock_face_t face_digital = {
     .destroy = destroy_digital,
     .set_time = set_time_digital,
     .set_date = set_date_digital,
+    .weather_compatible = false,
+    .set_weather = NULL,
 };

@@ -10,6 +10,8 @@
 #include "clock_ui.h"
 #include "esp_log.h"
 #include "lvgl.h"
+#include "network_service.h"
+#include <stdlib.h>
 
 #include <stdio.h>
 #include <sys/time.h>
@@ -27,7 +29,12 @@ typedef struct
   int second;
 } clock_time_t;
 
-static size_t current_face_index = 0;
+static size_t current_face_index = 2;
+static bool current_face_supports_weather(void)
+{
+  const clock_face_t *face = clock_face_at(current_face_index);
+  return face && face->weather_compatible && face->set_weather;
+}
 
 /* ==========================================================================
  * Private Helper Functions (Layout & Animations)
@@ -80,6 +87,20 @@ static void clock_ui_update_async_cb(void *data)
   int second = time_data->second;
   clock_face_at(current_face_index)->set_time(hour, minute, second);
   free(time_data);
+}
+
+typedef struct
+{
+  weather_data_t weather;
+} clock_weather_t;
+
+static void clock_ui_weather_async_cb(void *data)
+{
+  clock_weather_t *w = (clock_weather_t *)data;
+  const clock_face_t *face = clock_face_at(current_face_index);
+  if (face && face->weather_compatible && face->set_weather)
+    face->set_weather(&w->weather);
+  free(w);
 }
 
 /* ==========================================================================
@@ -155,4 +176,21 @@ void clock_ui_set_time(int hour, int minute, int second)
     time_data->second = second;
     lv_async_call(clock_ui_update_async_cb, time_data);
   }
+}
+
+bool clock_ui_weather_supported(void)
+{
+  return current_face_supports_weather();
+}
+
+void clock_ui_set_weather(const weather_data_t *data)
+{
+  if (!data || !current_face_supports_weather())
+    return;
+
+  clock_weather_t *payload = malloc(sizeof(clock_weather_t));
+  if (!payload)
+    return;
+  payload->weather = *data;
+  lv_async_call(clock_ui_weather_async_cb, payload);
 }
